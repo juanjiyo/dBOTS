@@ -1,0 +1,317 @@
+
+                            \|||/
+                            (o O)
+      +-----------------oooO-(_)----------------------+
+      |                                               |
+      |   dBoTs 3.6.1 para Unreal 3.2.8 + UDB 3.6.1   |
+      |                                               |
+      +-------------------------Oooo------------------+
+                           |_| |_|
+                            || ||
+                           ooO Ooo
+
+Autores:
+ - Davidlig (David Abuin Fontán) hasta la versión para UDB2
+ - Mew (Tomás Castro Prada) desde la versión para UDB3
+
+E-Mail: admin@dbots.es 
+URL: http://www.dbots.es
+Prohibido modificar el código de los bots y sus créditos.
+
+Leyenda:
+
+   + Añadido
+   - Quitado
+   % Cambiado
+   * Bug corregido
+
+18/09/2020 * Pequeños errores detectados en este tiempo de "inactividad" de los updates.
+18/09/2020 + Pestaña SMTP en el dialgo de CONF para configurar SMTP.
+18/09/2020 % Volvemos al clasico sistema de SMTP
+21/04/2020 + Debido a un problema con los caracteres Ñ y ñ, se impide el uso de canales con Ñ en mayúsculas.
+19/04/2020 % SMTP por cortesía de FsDk.
+10/04/2020 + Comprobación de posibles ficheros eliminados por antivirus.
+06/04/2020 * Error en $nickserv  al expirar nicks con caracteres como [ o ]
+27/04/2019 % $debugserv ahora entrará por el nodo de dBoTs para evitar flood desde los propios bots.
+27/04/2019 % La función del bot IPVirtual para a $operserv
+03/02/2019 * Fallo en el comando ESPECIAL de $chanserv (Aviso de Martin)
+02/02/2019 + Cuando se detecta un SPAM desde el SPAMFILTER, $operserv lo avisará en %canal.conf.opers
+08/10/2018 % Ahora los roots identificados también pueden añadir ADMINistradores.
+08/10/2018 + Sistema de verificación de IPs virtuales, ya que debido a un fallo del UDB, si se hace /rehash no se ven las IPs asigandas.
+08/10/2018 * Fallo al eliminar los mensajes de nick registrado y nick no registrado en $nickserv (Aviso de JuanJo_Jaen)
+24/09/2018 * Fallo en el comando BLACKMAIL de $nickserv (Aviso de JuanJo_Jaen)
+12/11/2017 * Error de sintaxis en $nickserv $+ , apenas se apreciaba el fallito...
+18/10/2017 * Comando AUTOMODE de $nickserv que no respondía. (Aviso de JuanJo_Jaen)
+09/07/2017 + opción UPDATE en el comando MODULO de $centerserv para buscar actualizaciones de un módulo
+09/07/2017 + Opción UNINSTALL en el comando MODULO de $centerserv para desinstalar un módulo
+09/07/2017 + Opción INSTALL en el comando MODULO de $centerserv para instalar un módulo
+09/07/2017 + Opción WLIST en el comando MODULO de $centerserv para listar los modulos disponibles en la web
+04/07/2017 * Fallo al agregar IPs a PROXYSERV con el comando IGNORA. (Aviso de JuanJo_Jaen)
+29/06/2017 % Mejoras internas en DeBuG.
+18/06/2017 + Comando MODE en PROSYSERV para escanear a todos los usuarios, o solo a los que entran con un nick no registrado.
+17/06/2017 % Correcciones internar en los dBoTs.
+15/06/2017 % Eliminada una web de DNSBL en PROXYSERV, ya que esta ha cerrado y daba falsos positivos...
+11/06/2017 * CHaNSeRV no reconocia al founder del canal cuando ciertos niveles estaban cambiados.
+06/06/2017 * Arreglado un fallo al avisar de los nicks registrados.
+31/05/2017 % No se contaba bien las usuarios que entraban a un canal, debido a que se tenia $count para separar canales, y no los daba bien... así que cambiamos a $numtok
+28/05/2017 + Sistema para que no muestre las HELPS de comandos a los que el usuario no tiene acceso.
+27/05/2017 % Sistema de ayudas, ahora las helps estan en un fichero llamado *.help y así no ocupan tantas lineas en el codigo interno
+22/05/2017 * Arreglado un fallo en DEBUG con los NOTICES de scripts cuando un usuario se ponia /away
+22/05/2017 % Importante cambio en PRoXy, ahora usa 15 listas de DNSBL para chequear la IP de un usuario.
+21/05/2017 % NiCK ya no pedirá que te identifiques el nick si esta registrado en BDD, solo te dará la bienvenida
+20/05/2017 * Fallo en el comando SET VHOST del bot NICK
+18/05/2017 * Fallo en la sincronización de la base de de canales...
+18/05/2017 * Los módulos podrían mandarse flood de texto entre ellos...
+17/05/2017 + Comando faltante FMODE a la lista de /msg CENTER HELP
+17/05/2017 % El root de la red ahora puede cambiar el FOUNDER de un canal OFICIAL.
+12/12/2012 + Cambiado el SMTP, esperemos qeu ahora no de más problemas...
+20/01/2012 + Sistema de proteccion del comando RAW para evitar que se envien acciones no deseadas (como privmsg, etc)
+20/01/2012 + Comando NORAW para manupular la base de comandos que no se pueden usar por RAW.
+20/01/2012 * Problema al escribir en archivos .db con mucho contenido (Aviso de CoYoTE)
+20/01/2012 % Codigos internos de los bots.
+19/01/2012 * AL poner un G-Line permatente desde los bots, este expiraba a los 6 segundos. (Aviso de HaDWaR)
+02/07/2011 * Arreglado un fallo con el auto update (debe ser que nadie lo usa, porque el error era bien grande xD)
+16/01/2011 * No se mostraban bien los nicks en el INFO de chan (Aviso de CoYoTE).
+20/09/2010 + Comando SET NAME en CHaN.
+20/09/2010 % Ips virtuales con colores.
+20/09/2010 - Quitado el uso obligatorio del sufijo en IPs virtuales.
+20/09/2010 * Arreglado un problema con el comando SPAM de oper.
+11/02/2010 * Se permitía ejecutar RAW sobre usuarios...
+10/02/2010 * Se mostraba un kick por "Fake direction" de los canales de OPERS y ADMINS al hacer un kill con /nick nick!pass
+30/12/2009 * No se mostraba el motivo del SUSPEND al ponerse un nick suspendido (Aviso de ^_Dream_^).
+17/12/2009 + añadida la help del comando DROPNDB en OPER (era el unico comando que no tenia help) (Aviso de ^_Dream_^).
+17/12/2009 * Arreglado un bug en el comando SPAM DEL de OPER, el cual no borraba el spam añadido (Avisos de ^_Dream_^).
+17/12/2009 % Actualizadas algunas erratas que había en los mensajes de los services (Avisos de ^_Dream_^).
+12/11/2009 * CHaN permitia usar el comando SET a usuariso no registrados (Aviso de KAN).
+26/10/2009 * Nick mandaba una fecha erronea al caducar un nick (Aviso de StacK).
+24/10/2009 * El comando INFO de NICK se comia la primera letra del REALNAME (Aviso de The_Ki||er).
+17/10/2009 + Numero de usuarios en el IRC y canales creados al comando STATS de OPERSERV.
+15/10/2009 * Arreglado un problema a la hora de borrar una gline de la BDD que se quitaba de modo manual.
+15/10/2009 * Arreglados unos problemas con proxy a la hora de agregar una gline.
+27/07/2009 * Arreglado un bug en CReGSeRV que creaba en la base de datos un nick duplicado (Aviso de [EeZzEe])
+20/04/2009 * Agregado codigo que falta en el comando PRIVMSG de PROXYSERV.
+20/04/2009 * Arreglado un problema con el comando RAW de CENTERSERV.
+19/04/2009 + UNSQLINE a la hora de borrar un nick de noticias mediante el bot NOTICIASSERV.
+17/04/2009 + Comando PRIVMSG en PROXYSERV para poder configurar el mensaje que manda proxy al detectar un puerto abierto.
+17/04/2009 % Proxy ahora ponr G-Line en vez de K-Line (Sugerencia de The_Ki||er).
+14/04/2009 * No se completaba el registro de un nick (Aviso de KAN).
+11/04/2009 * Reparado un bug grabe en el comando BFOUNDER de CHANSERV que tiraba el IRCd.
+29/03/2009 + helps de todos los comandos de los services (los comandos para representantes no tenian help).
+29/03/2009 * El comando INVITE de OPERSERV se intentaba ejecutar igual si no se especificaba un canal.
+28/03/2009 * Arreglado un error de guardado de datos desde PROXYSERV que impedia a CENTERSERV borrar bien las klines (aviso de _WinduSs_).
+27/03/2009 + Comando VREG en NICKSERV para activar o desactivar la opcionde validación de registros de usuarios (Idea de _WinDuSs_)
+25/03/2009 + Sistema para validar registros de usuarios. (Idea de StacK)
+23/03/2009 % Por razones logicas, se para de 7 días a 24 horas el tiempo que ha de pasar para usar el nick registrado por primera vez.
+17/03/2009 + Ahora se pueden usar comodines * en el comando DROP de nickserv, así se eliminan posibles registros de clones más rapido.
+16/03/2009 % Manejo de la BDD del comando blackmail.
+16/03/2009 * NiCK daba un error al querer ejecutar el comando SENDNEWPASS (Aviso de _WinDuSs_)
+14/03/2009 + Lista negra para el registr de nicks en ciertos dominios. (comando blackmail en nicksers)
+14/03/2009 % Mejoras internas, mensajes más especificos, etc.
+12/03/2009 * Algunos errores internos de los dBoTs.
+12/03/2009 % Todo el sistema de envio de datos al UDB.
+08/03/2009 + Sisteme de "auto-conncet" (no se como no lo hice antes, jajaja)
+04/03/2009 + Comando VIEW en el comando SPAM de oper (/msg oper spam view palabra)
+04/03/2009 % Algunos codigos internos de los dBoTs para agilizarlos.
+03/03/2009 + Se termina el comando spam, para añadir spam a la BDD del UDB.
+03/03/2009 * Algunos errores internos.
+21/02/2009 + Al activar la opción keeptopic (recordar topic), chan mira el topic del canal ylo guarda en la BDD.
+20/02/2009 * No se agregaban datos datos al UDB al iniciar el primer vuelco a la BDD.
+20/02/2009 * No se enviaba el QUIT al servidor SMTP (Aviso de _WinDuSs_).
+16/02/2009 + Opción "E-mail" en el apartado de SMTP. Este correo ha de ser valido para poder enviar correos por el SMTP.
+16/02/2009 - Ya no es necesario una cuenta de correo para el SMTP y un login.
+16/02/2009 % Se modifica todo lo relacionado con el socket que envia correos. Se adapta y mejora para el uso con el SMTP de mundo-r.com
+15/02/2009 * Se arregla un error en el envio de correos, ya que si se activa la opción "no pide identificación" los dbots seguían mandando el LOGIN.
+22/08/2008 * Problemas con el autolimir si el canal tenia caracteres especiales (Aviso de TooR)
+10/08/2008 * Problemas al eliminar un canal si tenia caracteres especiales (Aviso de TooR)
+07/06/2008 + Las *lines (glines, zlines, qlines) se guardan tambien en la BDD del UDB.
+07/06/2008 - Se elimina el módulo NOSPAM, ya que ahora el UDB tiene BDD para el spam.
+07/06/2008 + Se vuelve a añadir el comando SPAM en oper, para añadir spam al bloque K del UDB.
+02/06/2008 + Añadido el comando SET en OPERSERV con las siguientes funciones: SUFIJO NICKSERV CHANSERV IPSERV PASSPROTECT y PREFIJOS
+14/05/2008 * Error en el borrado de nicks de la BDD del IRCd si tenía asciis tipo [ ] etc (Gracias The_Ki||er)
+14/05/2008 * Error en el dropeo de canales cuando el founder era un nick con asciis tipo [ ] etc (Gracias The_Ki||er)
+12/05/2008 + Ahora se pueden introducir o sacar bots en canales mediante el comando /sajoin o /sapart (NOTA: Hay que ser IRCop con acceso a SAJOIN/SAPART)
+16/04/2008 + Comando AUTOKILL en PROXYSERV para gestionar una lista de IPs auto glineadas.
+06/03/2008 + Sistema de LOG por si se recibe un ERR 4 desde el UDB.
+01/03/2008 + Información de actualizaciones automáticas en los creditos.
+29/03/2008 - Codigos obsoletos...
+24/02/2008 + Algunos cambios internos en los dBoTs.
+24/02/2008 * CHaN quitaba el modo +q del fundador de un canal si tenia caracteres tipo [ ] etc
+22/02/2008 + Sistema de actualizaciones automaticas cada 24h (cada 24h que los dBoTs estén conectados, logicamete).
+22/02/2008 * Se generaban erroress con las expiraciones de nicks con asciis como "[" y "]" etc.
+20/02/2008 + Sistema para detectar si un canal en la BDD no registrado, y de ser así es borrado. (Se me olvido al hacer el de nicks, jajaja)
+19/02/2008 * No se daba @ en canales registrados al founder si tenia asciis tipo [ o ] etc. (Aviso de HaDWaR)
+02/02/2008 % Sistema de actualización de los dBoTs, parece que ahora si funciona bien... (Gracis The_Ki||er por tu tiempo)
+01/02/2008 * Algunos problemas internos en los dbots...
+31/01/2008 + Aviso de bloqueo en el $decode, ya que si está bloqueado los dBoTs darán problemas. (Gracias eL_PaPi_XuLo)
+31/01/2008 * No se actualizaba el bloque L si se cambiaba el nombre al nodo de los services. (Gracias eL_PaPi_XuLo)
+31/01/2008 * Ums... una tonteria mia que se me paso en el dialog de configuración del nodo de debug xD. (Gasias eL_PaPi_XuLo por el aviso)
+12/01/2008 * No se eliminaban las noticias mediante un nick si dicho nick empezaba por ciertos asciis, como [ ] etc.
+10/01/2008 + Sistema para detectar si un nick en la BDD no registrado, y de ser así es borrado.
+10/01/2008 * Se podían migrar nicks a la BDD sin que estubiéran registrados (Aviso de ReCoRD)
+05/11/2007 % Diversos cambios y mejoras internas en los dBoTs.
+31/08/2007 * Error en la comprobación del UDB que usa el servidor.
+25/07/2007 * Error en la sintaxis de UNFORBID a un nick, aviso de JOA.
+08/07/2007 + Sistema de ayuda online.
+07/07/2007 + Añadido un dialog de configuración para el servidor de debug.
+05/07/2007 * Había problemas con la caducidad de nicks con asciss como [ o ] etc.
+29/06/2007 * Se mostraban mal los nicks en los emails enviados al registrar el nick, al llegar la fecha de caducudad, etc si el nick tenia asciis como [ o ] etc.
+27/06/2007 * No se descargaban bien las actualizaciones de la nueva web. (Aviso de InFecTioN)
+20/06/2007 * Se creaban 2 archivos de un nick registrado al registrar un canal, si dicho nick tenia asciis como [ o ] etc. (Aviso de InFecTioN)
+19/06/2007 % Diversos cambios internos en los dBoTs.
+19/06/2007 + CHaNSeRV quita los modos +qaohv de los usuarios de un canal dropado.
+17/06/2007 + Debug por ventana del servidor SMTP para poder saber porque no funciona un SMTP en los dBoTs.
+17/06/2007 + Ahora los bots entran en los canales que tengan configurado un especial sin esperar que entre un usuario.
+12/06/2007 * Arreglado un error en CReGSeRV a la hora de registrar canales, permitía registrar más de 1 al día aunque ARDIA estubiera ON (Aviso de InFecTioN)
+12/06/2007 * Arreglado un error en CReGSeRV a la hora de poner las descripciones de los canales aceptados (Aviso de DJB3B3).
+08/06/2007 + Comando MIGRAR en CHaNSeRV para poder migrar canales si la BDD del IRCd se perdiera.
+24/05/2007 * CHaNSeRV no permitía poner el modo l (ele minúscula) en el mlock de un canal (Aviso de DavKlof)
+20/05/2007 * CHaNSeRV no ponía bien la contraseña puesta en el mlock al reconectar los bots (Aviso de Xorro)
+15/03/2007 * CReGSeRV mandaba un mensaje "erróneo" si un canal ya tenia todos los apoyos necesarios y se quería cancelar. (Gracias a Merlin_el_mago)
+15/03/2007 * CReGSeRV mandaba un mensaje "erróneo" si un canal ya tenia todos los apoyos necesarios y se quería dar otro apoyo. (Gracias a Merlin_el_mago)
+09/03/2007 + Se ha vuelto a añadir el comando GHOST en NiCKSeRV... (Como molesta trabajar a lo tonto...)
+09/03/2007 * Pequeño problemilla con la protección de kill de NiCKSeRV (Gracias por el aviso MaSTeRiX).
+09/03/2007 % Sistema de auto-identificación... Ahora si un usuario no recibe el modo +r no se le da status de identificado, como pasaba antes...
+22/01/2007 * Envío del email de aviso de caducidad. Si un usuario se le mandaba y conectaba después, no se le volvía a avisar si su nick estaba apunto de expirar
+19/01/2007 + Sistema de debug por ventana, ahora se ve, aparte de lo que reciben los bots, también lo que envían...
+18/01/2007 + Se para el estado del nick a la sección de configuración para evitar problemas con el $r.c
+26/12/2006 + Sistema de PING/PONG para poder detectar si el socket de los bots se ha quedado "pillado".
+25/12/2006 % Algunos cambios en el código para el nuevo bloque del UDB.
+25/12/2006 + Comando PMODE en CHaNSeRV para proteger los modos del canal por BDD, sin necesidad de usar el mlock.
+25/12/2006 + Comando DCLONES (Defect Clones) en CeNTeRSeRV, para configurar el número de clones por defecto para todas las conexiones.
+22/12/2006 * CHaNSeRV no mostraba bien el entrymsg de canales al ser registrados con el comando "OFICIAL".
+21/12/2006 + Nuevo status para el root principal, así se podrá tener comandos únicos para el root principal, y comandos para todos los roots de la red.
+20/12/2006 % Sistema de manipulación de la BDD, ahora se usan dos servidores para tener mejor control y evitar problemas a la hora de manipular las BDDs.
+17/12/2006 % Fecha que salía en "Ultima hora por la red: X" en el /msg nick info X para un buen funcionamiento del IRcap.
+14/12/2006 % DeBuG ya no es un modulo opcional de los bots. Pasa a ser un roBOT más para poder evitar el descontrol de la BDD.
+01/12/2006 % Cambios internos en algunos códigos de los roBOTs para un mejor funcionamiento.
+24/11/2006 + Un "parámetro" para el entrymsg de CHaNSeRV, <nick> que se cambia por el nick que entra al canal.
+24/11/2006 * CHaNSeRV no quitaba el +k de un canal si este era un ascii tipo "" "" "" "" y no se especificaba. Aviso de ^_Dream_^.
+14/11/2006 + Función <fecha.caduca> en el email "nexpire.txt" para poner la fecha de caducidad de un nick.
+12/11/2006 * Al usar "/msg nick SET PASSWORD" ya que si el nick tenia el antiguo método de cifrado, no se actualizaba.
+07/11/2006 * No se borraban los canales del UDB al expirar, DROParlos, etc.
+06/11/2006 % dBoTs adaptados a Unreal IRCd 3.2.6pre1 + UDB 3.4es
+04/11/2006 * Pequeño error que hacía la entrada de los bots a la red más lenta si había varios servidores linkados.
+04/11/2006 % Añadido un menú donde salen los módulos instalados para poder editar su configuración
+03/11/2006 * Arreglado un fallo importante a la hora de auto-borrar nicks caducados o droparlos.
+03/11/2006 % Comando DROPNDB en OPER accesible solo para ROOTs, ya que se puede borrar cualquier nick.
+03/11/2006 * El comando DROPNDB de oper no dejaba borrar un nick de la BDD si no está registrado.
+27/10/2006 * CHaNSeRV no decía bien el mensaje al usar, por ejemplo, a secas "/msg chan OP"
+27/10/2006 % No se podrá usar "SET NOEXPIRE" a un usuario con una fecha mayor de 12 meses por un bug del mIRC.
+24/10/2006 % Registro de canales OFICIALES en CReGSeRV, me había dejado cosas sin cambiar... jejeje
+24/10/2006 * Problemas con el modulo "rrusa",
+23/10/2006 % Algunas erratas en los mensajes de los bots...
+23/10/2006 % Algunos cambios en el código de los bots.
+21/10/2006 % Sistema de envío de contraseñas a la BDD, ahora se guardan en un modo "seguro".
+21/10/2006 * Los administradores y roots secundarios podían ver el password del root principal.
+20/10/2006 * Sintaxis en un comando que no mandaba bien los datos a la BDD del UDB, lo que provocaba un registro incorrecto.
+19/10/2006 + Sistema de aviso de caducidad de nick. Si a un nick le queda 1 semana o menos para expirar se le manda un mail.
+14/10/2006 * Quitado un bug que permitía tirar los services de la red mediante una secuencia errónea.
+14/10/2006 % Sistema de IPs virtuales, ahora solo se pueden usar estos caracteres: a-z A-Z 0-9 - .
+11/10/2006 - Sistema de BDDs en los bots mediante hash tables. Daba muchos problemas...
+09/10/2006 + Posibilidad de añadir varios nick con MOTD.
+08/10/2006 % Algunos cambios en el código interno de los bots.
+08/10/2006 + Comando "actualiza" en CeNTeRSeRV para buscar actualizaciones de los bots.
+07/10/2006 * Reparado un "bug" referente al root principal de los bots.
+07/10/2006 + Comandos pre-oper, oper, co-admin y admin en global para mandar globals a representantes (Y superiores).
+05/10/2006 * kick a módulos en canales autolimitados arreglado, ahora chan no hace "el tonto".
+05/10/2006 % Adaptado el modulo "numberserv" a los dbots3.
+04/10/2006 % Adaptado el modulo "debugserv" a los dbots3.
+03/10/2006 * Encontrado otro error en el autolimit cuando se echaba a un roBOT de un canal (Descontaba 1 usuario).
+03/10/2006 + "Protección" de kick contra los bots, si alguno IRCop es tan burro como para kickearlo, los bots re-entra.
+03/10/2006 + Comando "Noticias" el en bot NoTiCiaS para leer las noticias de la web.
+02/10/2006 + "Protección" de kill contra los bots, si algún IRCop es tan burro como para killearlos, los bots re-conectan.
+01/10/2006 % Nombre de los archivos de los bots, ya que había problemas con Win2000/XP y global.mrc
+01/10/2006 * No se agregaban bien los status de los representantes al bloque "N::nick::O".
+30/09/2006 + El roBOT NoTiCiaS manda un global cuando se añade una noticia (Tanto para usuarios como para representantes).
+30/09/2006 * Memo permitía enviar mensajes a un usuario aunque el receptor lo tuviera en la lista negra (nomemos).
+30/09/2006 + Sistema de BDDs en los bots mediante hash tables. Ahora los bots tienen una BDD como otro servidor más.
+30/09/2006 + Al linkar los bots, optimizamos las BDDs de la red y guardamos el byte en el que hay que escribir.
+27/09/2006 % Sistema de identificación de nicks registrados, ahora si un nick no tiene +r se le avisa que se identifique y demás.
+23/09/2006 + MeMoSeRV envía un memo a un usuario cuando su canal es aprobado o denegado.
+23/09/2006 * El comando "/msg memo READ LAST" no pillaba bien el ultimo mensaje. (Gracias InFecTioN por el aviso)
+23/09/2006 % CReGSeRV solo permite el registro de canales si el usuario tiene @ en dicho canal. (Lo que nos costo he InFecTioN!)
+22/09/2006 + Solo el founder original de un canal puede usar SET PASSWORD / FOUNDER / SUCCESSOR.
+22/09/2006 + Mensaje a nicks no registrados, si pasa 1min desde que conecte y no se pone un nick registrado, se le manda un texto (Editable)
+22/09/2006 * Chan no permitía a un usuario identificado como founder el manejo del canal.
+22/09/2006 + Comando INVITE en oPeR para que los operadores se inviten a canales no registrados.
+22/09/2006 + Si hay bots en un canal OFICIAL o COMERCIAL y se les da modos (+q +a o+ +h +v) se lo quitan.
+22/09/2006 + CeNTeRSeRV ponen modos por defecto (+sint) en los canales de operadores, administradores y debug de clones si no están registrados.
+18/09/2006 * Si no teníamos memos, al usar "/msg memo read last" memo decía una "paranoias" de mensaje. (Gracias a CoDiGo por el aviso)
+18/09/2006 + Opción LAST en el comando "/msg MeMo read" para leer el ultimo mensaje recibido. (Idea de rubenwilson)
+18/09/2006 * SHaDoW se piraba de un canal al quitar "sus modos" (k i R) aunque estuviera el especial activo.
+17/09/2006 * Se contaban usuarios de mas en el auto-limit al haber un split en la red.
+15/09/2006 % Diversos cambios en el código y arreglados bugs encontrados...
+09/09/2006 + Comando "nomemos" en MeMo para evitar mensajes molestos de ciertos usuarios.
+08/09/2006 * AUTO-LIMIT no funcionaba correctamente cuando había bots en los canales, ya que solo contaba usuario.
+07/09/2006 + Comando "inmune" en proxy para añadir / borrar IPs o Host inmunes a ciertas acciones.
+05/09/2006 + AL linkar los bots a un nodo con el bloque SET vacío, añadimos algunas opciones por defecto: clave de cifrado, sufijo de IPs, etc.
+05/09/2006 % Terminada la actualización de todos los bots que necesitan UDB3.
+05/09/2006 * No se actualizaba el registro de los bytes al optimizar una tabla.
+26/08/2006 - Comando "DEBUG" en el bot CeNTeR.
+26/08/2006 % roBOT CReG y CHaN adaptados al UDB3, esperemos que no haya problemas !! ^_^
+23/08/2006 - Opción MODER en el comando "/msg nick MSGNR" ya que a todos los nicks se les activa el modo +r
+13/07/2006 - Comando GHOST en NiCK, ya que para hacer un GHOST se usa /nick elnick!elpass o /ghost <nick> [clave]
+13/07/2006 + Opción TLF en el comando "/msg NiCK set" para poder poner un numero de teléfono en la info del nick.
+13/07/2006 + Auto-migrado de nicks y canales a la BDD del IRCd.
+13/07/2006 - Todo lo relacionado con activar o desactivar el MODER en canales y nicks.
+03/07/2006 - Modulo CDT (Comprobador de tablas) ya que solo era para resolver los problemas del UDB2.
+03/07/2006 % roBOT NiCK adaptado al UDB3, esperemos que no haya problemas !! ^_^
+02/07/2006 + Comando AUTOMODE en el bot NiCK para configurar automáticamente modos a un usuario (Útil para bots en modo cliente).
+29/06/2006 % Mensaje de "inicio" en el status, ahora usamos hotlinks para acciones rápidas como conectar los bots, configurarlos, etc.
+29/06/2006 % Créditos de los dbots, dejo el mensaje de davidlig, pero añado cosas mías... como es lógico :)
+29/06/2006 % Sistema de contraseñas, ahora se crean contraseñas de alta calidad, como: e85OaHo6fl8Z, 8Titvq7EI95L, etc.
+29/06/2006 + Creado modulo DeBuG (Monitorizador de mensajes entre servidores)
+29/06/2006 + Comando "fmode" en CeNTeR para forzar modos en un usuarios.
+29/06/2006 + Comando "remoper" en CeNTeR para eliminar lo modos de IRCop de un usuario.
+29/06/2006 + Comando "fsnomask" en CeNTeR para poder añadir o quitar fsnomask a un usuario.
+29/06/2006 + Sistema de módulos para crear bots de forma "sencilla" (Lógicamente hay que saber algo de scripting y socks).
+29/06/2006 % Archivo ip.db renombrado a ips.db ya que daba problemas en Windows XP.
+29/06/2006 % Comando RAW en CeNTeR, ahora no se pueden ejecutar comandos sobre usuarios conectados.
+29/06/2006 % Modo de guardar los mensajes con colores (Alias $q.c u $p.c).
+29/06/2006 + Comando SET AUTOLIMIT en CHaN, idea sacada del IRC-Hispano.
+29/06/2006 * CHaN no daba @ al founder de un canal usando /msg CHaN op #canal nick si tenia activo el SECUREOPS.
+29/06/2006 % El bot NoTiCiaS ahora puede poner varias noticias para usuarios y representantes (Desde pre-opers hasta roots).
+
+24/05/2004 - Sistema de confirmación a la hora de cambiar la contraseña de un nick.
+20/05/2004 * BLOCK y KILLCLONES de OPeR no funcionaban. (Gracias a chuskyx por el aviso)
+18/05/2004 + Dialog de configuración por Mew.
+17/05/2004 + Comando MARCADEL en NiCK.
+17/05/2004 % Comando MARCA en NiCK en dos comandos MARCA (Añade) MARCADEL (Borra)
+17/05/2004 % Comandos GETPASS y MSGNR ahora solo lo pueden utilizar los administradores.
+15/05/2004 + Comando SINCRONIZA en CeNTeR.
+16/05/2004 - Comando OPTIMIZA de CeNTeR.
+08/05/2004 + Comando SET EMAILR en NiCK.
+06/05/2004 + Actualización de los datos en DB cuando se hace un SETIDENT ó SETNAME.
+06/05/2004 + Opción CLEAR en el comando ACCESS de CHaN.
+03/05/2004 % Mejorado el sistema de actualización de los bots.
+04/05/2004 * En MeMO que permitía enviar memos a nicks no registrados y provocaban un bug en la rutinas de expiración.
+02/05/2004 + Comando SAJOIN y SAPART para administradores de CeNTeR.
+01/05/2004 + La posibilidad de registrar canales que tengan " * . / < > ? [ \ ]
+01/05/2004 - La posibilidad de registrar canales que tengan ƒ ¥ ± 1/4 1/2 Æ Ø Þ å æ ø , : ya que activan un bug en CHaN y CReG.
+01/05/2004 * De los comandos PREOPERS, OPERS, COADMINS Y ADMINS en MeMO (no funcionaban).
+28/04/2004 + Comando OPTIMIZA para roots en CeNTeR.
+25/04/2004 + Implantación de los modos c u C G N S T V en CHaN.
+25/04/2004 + A CMODES de HeLP la ayuda de los nuevos modos añadidos en CHaN.
+25/04/2004 * En el MLOCK de CHaN por el modo k a la hora de hacer un RESTART a los bots.
+24/04/2004 + Mejora en GLINE/KLINE de CeNTeR y OPeR ahora se puede especificar ident@host.
+24/04/2004 % El comando BOT en CeNTeR para DBots Olimpo.
+24/04/2004 % Protocolo UDB a UDB2 para uso de los bots en Unreal3.2pre1+UDB-2.0es.
+24/04/2004 * Varios bugs en CReG a la hora de registrar canales.
+24/04/2004 * En INFO de NiCK que no salía la última hora de conexión si el nick estaba conectado y no identificado.
+14/04/2004 * No funcionaba el candado del modo k una vez seteado en el SET MLOCK de CHaN.
+14/04/2004 * Que dejaba añadir registros con decimales en los canales.
+14/04/2004 * Que dejaba modificar los niveles de un canal con la posibilidad de ponerlos con parte decimal.
+13/04/2004 % Todo el sistema de Ip Virtuales.
+13/04/2004 % INFO de NiCK ahora las ips virtuales de los representantes también salen en el info.
+13/04/2004 % Comandos SET VMASK por SET VHOST y DROPVMASK por DROPVHOST en NiCK.
+13/04/2004 * Que no borraba las ips virtuales fijas (VHOST de NiCK) al borrar un nick.
+13/04/2004 * Que no borraba las ips virtuales semifijas (SET VHOST de NiCK) de la DB al deshabilitarlas.
+12/04/2004 * Que permitía a los operadores utilizar comandos de ADMIN de CReG.
+11/04/2004 + Comando BOT en CeNTeR que permite añadir bots como oficiales.
+11/04/2004 + Adaptación del código de los DBots a la nueva base de bots secundarios.
+11/04/2004 * Comando INVITE en CHaN que solo funcionaba con los representantes de la red.
+09/04/2004 + Comando ESPECIAL en CHaN (/msg CHaN AYUDA ESPECIAL).
+09/04/2004 - La posibilidad de registrar canales que tengan ? ya que activan un bug en CReG.
+09/04/2004 * No se añadían bien los registros en las data base.
+07/04/2004 * No se mostraba la lista de puertos que se escanean en PRoXy.
+ 

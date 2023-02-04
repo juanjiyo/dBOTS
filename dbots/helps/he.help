@@ -1,0 +1,38 @@
+[help]
+3[ Ayuda de $helpserv ]
+.
+12 $+ $helpserv bot de ayuda global de la red.
+Teclea las palabras en azul para más información sobre el tema.
+.
+10Información básica de la red:
+.
+12UMODES Muestra los modos de usuario disponibles.
+12CMODES Muestra los modos de canal disponibles.
+12BOTS Muestra información sobre los bots de la red.
+12CREDITOS Muestra los créditos de los bots.
+.
+10Algunos servicios básicos de la red:
+.
+12NICK Instrucciones de como registrar un nick.
+12CANAL Instrucciones de como registrar un canal.
+.
+Para cualquier tipo de información a mayores de la que aparece en
+este bot consulta con un operador (@) en %conf.canal.ayuda o en la web oficial de la red.
+
+[umodes]
+Usa12 /msg $helpserv UMODES
+
+[cmodes]
+Usa12 /msg $helpserv CMODES
+
+[bots]
+Usa12 /msg $helpserv BOTS
+
+[creditos]
+Usa12 /msg $helpserv CREDITOS
+
+[nick]
+Usa12 /msg $helpserv NICK
+
+[canal]
+Usa12 /msg $helpserv CANAL

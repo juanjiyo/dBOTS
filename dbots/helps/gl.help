@@ -1,0 +1,88 @@
+[cl]
+help-ca=7
+help-r=8
+help-f=7
+global=7
+nick=7
+chan=7
+pre-oper=7
+oper=7
+co-admin=8
+admin=8
+join=8
+
+[help-ca]
+3[ Ayuda de $globalserv ]
+.
+12 $+ $globalserv es el servicio de mensajería global
+para uso exclusivo de Co-Administradores y Administradores.
+.
+10- Comandos de Co-Administradores:
+.
+12GLOBAL Envía un mensaje global.
+12NICK Envía un mensaje global a través de un nick.
+12CHAN Envía un mensaje a todos los usuarios de un canal.
+12PRE-OPER Envía un mensaje a todos los PRE-OPERadores (Y superiores) conectados.
+12OPER Envía un mensaje a todos los OPERadores (Y superiores) conectados.
+
+[help-r]
+.
+10- Comandos de Roots:
+.
+12CO-ADMIN Envía un mensaje a todos los CO-ADMINistradores (Y superiores) conectados.
+12ADMIN Envía un mensaje a todos los ADMINistradores conectados.
+12JOIN Fuerza a los usuarios a entrar a un canal.
+
+[help-f]
+.
+4NOTA: Los comandos utilizados son informados en el canal
+de administradores de la red.
+
+[global]
+Sintaxis:12 GLOBAL <mensaje>
+.
+Envía un mensaje a todos los usuarios del IRC.
+
+[nick]
+Sintaxis:12 NICK <nick> <mensaje>
+.
+Envía un mensaje a todos los usuarios del IRC,
+usando como nick que nvía el mensaje el nick
+que hayamos puesto.
+
+[chan]
+Sintaxis:12 CHAN <canal> <mensaje>
+.
+Envía un mensaje a todos los usuarios que
+estén dentro del canal indicado.
+
+[pre-oper]
+Sintaxis:12 PRE-OPERS <mensaje>
+.
+Envía un mensaje a los Pre-OPERs y superiores
+que estén conectados en ese momento.
+
+[oper]
+Sintaxis:12 OPER <mensaje>
+.
+Envía un mensaje a los OPERs y superiores
+que estén conectados en ese momento.
+
+[co-admin]
+Sintaxis:12 CO-ADMIN <mensaje>
+.
+Envía un mensaje a los CO-ADMINs y superiores
+que estén conectados en ese momento.
+
+[admin]
+Sintaxis:12 ADMIN <mensaje>
+.
+Envía un mensaje a los ADMINs que
+estén conectados en ese momento.
+
+[join]
+Sintaxis:12 JOIN <canal> <motivo>
+.
+Envia un mensaje a todos los usuarios
+del IRC, indicandoles por qué se les
+hace entrar al canal indicado.

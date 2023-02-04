@@ -1,0 +1,14 @@
+Registro del NiCK '<d4>' en <n.red>
+Nick: <d4>
+Contraseña: <d5>
+<s>
+Para identificarte -> /nick <d4>!<d5>
+Para cambiar la contraseña por otra que prefieras -> /msg <d3> SET PASSWORD <nueva_contraseña>
+<s>
+NOTA: Si no usas por primera vez tu nick antes de 7 días tu nick expirará.
+<s>
+Si necesita cualquier tipo de ayuda /msg <d6> AYUDA o bien
+consulta con un operador en <c.ayuda>
+<s>
+Gracias por confiar en nosotros
+El equipo de <n.red>

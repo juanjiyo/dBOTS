@@ -1,0 +1,10 @@
+Servicio de noticias de <n.red>
+Noticia enviada a la cuenta de correo del nick <d4>
+<s>
+<d5->
+<s>
+Si no desea volver a recibir noticias de nuestra red
+utilice el comando /msg <d3> BAJA
+<s>
+Gracias por confiar en nosotros
+El equipo de <n.red>

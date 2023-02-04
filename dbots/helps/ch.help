@@ -1,0 +1,719 @@
+[cl]
+help=1
+help-po=4
+help-o=5
+help-ca=6
+help-f=4
+INFO=1
+OP=1
+DEOP=1
+HALFOP=1
+DEHALFOP=11
+VOICE=1
+MIGRAR=1
+DEVOICE=1
+INVITE=1
+KICK=1
+UNBAN=1
+CLEAR=1
+IDENTIFY=1
+ACCESS=1
+ACCESS-LEVELS=1
+DELACCESS=1
+AKICK=1
+SET=1
+set-FOUNDER=1
+set-SUCCESSOR=1
+set-PASSWORD=1
+set-DESC=1
+set-URL=1
+set-EMAIL=1
+set-ENTRYMSG=1
+set-autolimit=1
+set-TOPIC=1
+set-KEEPTOPIC=1
+set-TOPICLOCK=1
+set-MLOCK=1
+set-RESTRICTED=1
+set-SECURE=1
+set-SECUREOPS=1
+set-SECUREHALFOPS=1
+set-pbans=1
+set-pmode=1
+set-DEBUG=1
+set-name=1
+LEVELS=1
+levels-DESC=1
+ESPECIAL=6
+BFOUNDER=6
+list=4
+drop=5
+suspend=5
+unsuspend=5
+listsuspend=5
+getpass=6
+forbid=6
+unforbid=6
+listforbid=6
+bfounder=6
+set-deftopic=1
+set-private=1
+set-noexpire=6
+
+[help]
+3[ Ayuda de $chanserv ]
+.
+12 $+ $chanserv es el bot encargado de la gestión de canales registrados
+de la red.12 $chanserv previene de usuarios malintencionados que
+pretendan "tomar" de canal así como gestionar los operadores
+permitidos de los mismos. Para utilizar el bot, escriba
+12/msg $chanserv comando y ejecutará el comando. Para obtener más
+información de un comando, escriba 12/msg $chanserv AYUDA comando.
+.
+Comandos generales:
+12INFO Muestra información de un canal.
+12OP/DEOP Da y quita OP en el canal por $chanserv $+ .
+12HALFOP/DEHALFOP Da y quita HALFOP en el canal por $chanserv $+ .
+12VOICE/DEVOICE Da y quita VOICE en el canal por $chanserv $+ .
+12INVITE Te invita a un canal.
+12KICK Kickea a un usuario en un canal.
+12UNBAN Te quita el BAN en un canal.
+12CLEAR Reinicia los modos de un canal.
+.
+Accesos al canal y configuración:
+12IDENTIFY Te da acceso de fundador del canal.
+12ACCESS Modifica la lista de usuarios privilegiados.
+12DELACCESS Elimina tu registro en dicho canal.
+12AKICK Mantiene la lista de Auto-Kick.
+12SET Fija opciones e información del canal.
+12LEVELS Redefine los niveles de accesos.
+12MIGRAR Registra el canal en la BDD del IRCd.
+.
+4NOTA: Si un canal no es utilizado por12  $l.conf(chanserv,caducacanales) días $chr(40) $+ es decir $+ $chr(44)
+qué ningún usuario en la lista de acceso del canal entra en
+ese periodo de tiempo) será automáticamente cancelado.
+
+[help-po]
+.
+10- Comandos de Pre-Operadores:
+.
+12LIST Lista los canales registrados.
+
+[help-o]
+.
+10- Comandos de Operadores:
+.
+12DROP Borra un canal registrado.
+12SUSPEND Suspende un canal.
+12UNSUSPEND Reactiva un canal suspendido.
+12LISTSUSPEND Lista de los canales suspendidos.
+
+[help-ca]
+.
+10- Comandos de Co-Administradores:
+.
+12GETPASS Muestra la contraseña de un canal.
+12FORBID Previene que un canal pueda ser utilizado.
+12UNFORBID Libera la prohibición de un canal prohibido.
+12LISTFORBID Lista de los canales prohibidos.
+12ESPECIAL Hace entrar bots a un canal.
+12BFOUNDER Borra el founder del UDB para que no de +q
+
+[help-f]
+.
+4NOTA: Algunos comandos utilizados son informados en el canal
+de operadores y administradores de la red.
+
+[INFO]
+Sintaxis: 12INFO <canal>
+.
+Provee información acerca del 12canal (o informa que no está
+registrado). Lista el fundador, hora y fecha de
+registro, última vez que se utilizó, descripción, y
+modos del canal (si los hubiese).
+
+[OP]
+Sintaxis: 12OP <canal> <nick>
+.
+Convierte en Operador al usuario indicado en el canal
+indicado. Por defecto, está limitado a quienes posean nivel
+300 o mayor en el canal.
+
+[DEOP]
+Sintaxis: 12DEOP <canal> <nick>
+.
+Quita el estado de Operador al usuario indicado en el canal
+indicado. Por defecto, está limitado a quienes posean nivel
+300 o mayor en el canal.
+
+[HALFOP]
+Sintaxis: 12HALFOP <canal> <nick>
+.
+Convierte en moderador al usuario indicado en el canal
+indicado. Por defecto, está limitado a quienes posean nivel
+200 o mayor en el canal.
+
+[DEHALFOP]
+Sintaxis: 12DEHALFOP <canal> <nick>
+.
+Quita el estado de moderador al usuario indicado en el canal
+indicado. Por defecto, está limitado a quienes posean nivel
+200 o mayor en el canal.
+
+[VOICE]
+Sintaxis: 12VOICE <canal> <nick>
+.
+Convierte en moderador al usuario indicado en el canal
+indicado. Por defecto, está limitado a quienes posean nivel
+100 o mayor en el canal.
+
+[MIGRAR]
+Sintaxis: 12MIGRAR <canal>
+.
+Registra el canal en la BDD del IRCd, en caso de que se haya
+borrado. Este comando solo puede ser usado por el FOUNDER
+del canal que se quiere migrar.
+
+[DEVOICE]
+Sintaxis: 12DEVOICE <canal> <nick>
+.
+Quita el estado de moderador al usuario indicado en el canal
+indicado. Por defecto, está limitado a quienes posean nivel
+100 o mayor en el canal.
+
+[INVITE]
+Sintaxis: 12INVITE <canal>
+.
+Le dice a12 $chanserv que lo invite a usted al canal indicado.
+Por defecto, solo funciona si su nivel de acceso en dicho
+canal es 300 o mayor.
+
+[KICK]
+Sintaxis: 12KICK <canal> <nick> [razón]
+.
+Le dice a12 $chanserv que kickee del canal a una persona.
+Por defecto, solo funciona si su nivel de acceso en dicho
+canal es 300 o mayor.
+
+[UNBAN]
+Sintaxis: 12UNBAN <canal>
+.
+Le dice a12 $chanserv que elimine tu prohibición de
+acceso a dicho canal. Por defecto, solo funciona si su
+nivel de acceso en dicho canal es 300 o mayor.
+
+[CLEAR]
+Sintaxis: 12CLEAR <canal> <opción>
+.
+Le dice a12 $chanserv que elimine ciertos parámetros del canal.
+que puede ser uno de los siguientes:
+12MODES Reinicia todos los modos del canal (limpia los
+modos n,t,i,m,l,p,s,R,M,G).
+12BANS Elimina todos los accesos prohibidos al canal.
+12OPS Elimina (quita) el privilegio de operador a
+todos los operadores (modo +o) del canal.
+12HALFOPS Elimina (quita) el privilegio de semi-operador a
+todos los operadores (modo +h) del canal.
+12VOICES Elimina (quita) el privilegio de "voz" (modo
++v) a cualquiera del canal que lo tuviese.
+12USERS Elimina (Patea -kicks-) TODOS los usuarios del
+canal.
+12TOPIC Reinicia el topic.
+.
+Por defecto, solo puede usarlo el fundador.
+
+[IDENTIFY]
+Sintaxis: 12IDENTIFY <canal> <contraseña>
+.
+Este comando, lo identifica a usted ante12 $chanserv como el
+fundador del 12canal. Muchos comandos requieren que usted
+utilice ESTE comando antes de poder utilizarlos. La
+contraseña debe ser la misma que se ingresó al momento de
+registrar el canal.
+
+[ACCESS]
+Sintaxis: 12ACCESS <canal> ADD <nick> <nivel>
+12ACCESS <canal> DEL <nick>
+12ACCESS <canal> LIST [mascara]
+12ACCESS <canal> CLEAR
+.
+Mantiene la 12lista de accesos del canal. La lista de accesos
+establece que usuarios están habilitados a ser operadores
+del canal o acceder a comandos de12 $chanserv en el canal. Se pueden
+establecer diferentes niveles de usuarios para acceder a
+diferentes privilegios; utilice 12/msg $chanserv AYUDA ACCESS LEVELS
+para obtener información mas específica. Cualquier nick que
+no esté en la lista de acceso tiene nivel de usuario 0
+(cero).
+.
+El comando 12ACCESS ADD agrega al 12nick con el 12nivel dado a la
+lista de acceso; si el usuario ya existe en la lista, se
+reemplazará su 12nivel. El 12nivel especificado debe ser menor
+que el que tiene el usuario que está ingresando el comando,
+y si el 12nick está actualmente en la lista, el nivel actual
+de dicho nick debe ser menor que el nivel del usuario que
+está ingresando el comando.
+.
+El comando 12ACCESS DEL elimina un usuario de la lista de
+accesos. Se puede eliminar un usuario ingresando el nick o
+ingresando el número que ocupa en la lista de accesos.
+.
+El comando 12ACCESS LIST muestra la lista de accesos al canal;
+se pueden utilizar caracteres comodines o mascaras, en cuyo
+caso solo las coincidencias concurrentes serán listadas.
+.
+El comando 12ACCESS CLEAR borra todos los usuarios de la
+lista de acceso. Sólo accesible para el fundador.
+
+[ACCESS-LEVELS]
+12Niveles de acceso para usuarios:
+.
+Por defecto, los siguientes niveles son definidos:
+.
+12Fundador acceso completo a las funciones de12 $chanserv $+ .
+Privilegio de operador al ingresar al canal.
+Note que únicamente una sola persona puede
+tener acceso de fundador del canal (no se
+puede dar acceso de founder con el comando
+ACCESS).
+12 499 Acceso al comando SET, OPDEOP, INVITE, UNBAN, AKICK, ACC, MEMO;
+operador automático al ingresar.
+12 450 Acceso al comando OPDEOP, INVITE, UNBAN, AKICK, ACC, MEMO;
+operador automático al ingresar.
+12 300 Acceso al comando OPDEOP, INVITE, UNBAN,
+operador automático al ingresar.
+12 100 Estado de VOZ automático (+v).
+12 0 No tiene privilegios especiales; puede obtener
+status de operador dado por otro operador
+(a menos que secure-ops esté activado).
+12 <0 No puede ser operador, ni entrar al canal.
+.
+Estos niveles pueden ser cambiados, o nuevos pueden ser
+agregados utilizando el comando 12LEVELS; escriba
+12/msg $chanserv AYUDA LEVELS para información.
+
+[DELACCESS]
+Sintaxis: 12DELACCESS <#canal>
+.
+Elimina tu registro del canal especificado.
+
+[AKICK]
+Sintaxis: 12AKICK <canal> ADD <nick> [razón]
+12AKICK <canal> DEL <nick>
+12AKICK <canal> LIST
+12AKICK <canal> ENFORCE
+.
+Definimos AKICK como "Expulsión automática".
+Definimos BAN como "Entrada prohibida".
+.
+Este comando, mantiene la lista de AKICK del canal. Si un
+usuario está en la lista de AKICK e intenta entrar al canal,
+12 $+ $chanserv automáticamente agrega dicho usuario a la lista BAN
+del canal, y luego lo expulsa del canal.
+.
+El comando 12AKICK ADD agrega un usuario a la lista de AKICK.
+Si una 12razón es dada con el comando, entonces la razón será
+utilizada por12 $chanserv cuando expulse a dicho usuario; si
+no, el mensaje que se utilizará por defecto, es
+" $+ $l.conf(chanserv,makick) $+ ".
+.
+El comando 12AKICK DEL elimina al usuario de la lista de
+AKICK. Este comando no remueve el BAN que pueda existir en
+el canal, el cual deberá ser removido manualmente.
+.
+El comando 12AKICK LIST muestra la lista de usuarios en la
+lista de AKICK. Opcionalmente, solo lista aquellos
+suministrados con la mascara dada.
+.
+El comando 12AKICK ENFORCE causa que12 $chanserv impide que los
+usuarios con mascara de AKICK en la lista de AKICK estén en
+el canal. Es parecido a CLEAR USERS, pero que solo afecta a
+los que tienen AKICK.
+
+[SET]
+Sintaxis: 12SET <canal> <opción> <parámetros>
+.
+Habilita al fundador del canal a definir varias opciones y
+otra información.
+.
+Opciones disponibles:
+.
+12FOUNDER Cambia el fundador del canal.
+12SUCCESSOR Cambia el sucesor del canal.
+12PASSWORD Cambia la contraseña del fundador.
+12DESC Cambia la descripción del canal.
+12URL Asocia una URL al canal.
+12EMAIL Asocia una dirección de correo al canal.
+12ENTRYMSG Fija un mensaje de entrada al canal.
+12TOPIC Cambia el topic del canal.
+12KEEPTOPIC Retiene el topic cuando el canal no está en uso.
+12TOPICLOCK El topic solo podrá ser cambiado vía SET TOPIC.
+12DEFTOPIC Activa/desactiva la opción de tópico por defecto.
+12MLOCK Fija los modos de un canal.
+12PRIVATE Oculta datos en el INFO del canal.
+12RESTRICTED Restringe el acceso al canal.
+12SECURE Activa los rasgos de seguridad de $chanserv $+ .
+12SECUREOPS Control estricto de status de operador.
+12SECUREHALFOPS Control estricto de status de semi-operador.
+12AUTOLIMIT Evita los ataques por MassJoin (clones).
+12PBANS Protección para quitar los bans por BDD.
+12PMODE Protección de modos del canal por BDD.
+12DEBUG Envía una noticia al canal sobre los comandos usados.
+12NAME Ajusta las minúsculas y mayúsculas en el nombre del canal.
+.
+Escriba 12/msg $chanserv AYUDA opción para obtener mas
+información de una opción en particular.
+$iif($s.n(<-nick->) >= 6,.)
+$iif($s.n(<-nick->) >= 6,10- Comandos de Co-Administradores:)
+$iif($s.n(<-nick->) >= 6,.)
+$iif($s.n(<-nick->) >= 6,12NOEXPIRE Permite marcar un canal para que no expire.)
+$iif($s.n(<-nick->) >= 6,.)
+$iif($s.n(<-nick->) >= 6,4NOTA: Algunos comandos utilizados son informados en el canal)
+$iif($s.n(<-nick->) >= 6,de operadores y administradores de la red.)
+
+[set-FOUNDER]
+Sintaxis: 12SET <canal> FOUNDER <nick>
+.
+Cambia el fundador del 12canal. El nick dado, que será el
+nuevo fundador del canal, debe estar registrado.
+
+[set-SUCCESSOR]
+Sintaxis: 12SET <canal> SUCCESSOR <nick>
+.
+Cambia el sucesor del canal. El nick dado, será el
+nuevo fundador del canal en caso de expirar el nick del
+fundador.
+
+[set-PASSWORD]
+Sintaxis: 12SET <canal> PASSWORD <contraseña>
+.
+Se utiliza para definir la contraseña que será utilizado
+para identificarse como el fundador del canal.
+
+[set-DESC]
+Sintaxis: 12SET <canal> DESC <descripción>
+.
+Fija la descripción del canal, la cual será mostrada cuando
+se utilicen los comandos 12LIST e 12INFO. Sea breve y concreto.
+
+[set-URL]
+Sintaxis: 12SET <canal> URL [url]
+.
+Asocia una URL al 12canal, la cual será visualizada cuando
+se solicite información del canal (vía comando 12INFO).
+Habitualmente se utiliza para indicar la dirección de la
+página web del canal. Si no se ingresa ninguna url, se
+borrará la que tenga actualmente el canal.
+
+[set-EMAIL]
+Sintaxis: 12SET <canal> EMAIL [dirección]
+.
+Asocia la dirección de correo dada al canal. Esta dirección
+será mostrada cuando alguien solicite (vía comando 12INFO)
+información del canal. Es muy útil, por ejemplo, para que
+los usuarios tengan una vía de comunicación con el fundador
+y/u operadores del canal. Si no se proporciona una
+dirección de correo, se eliminará la que actualmente pueda
+tener el canal.
+
+[set-ENTRYMSG]
+Sintaxis: 12SET <canal> ENTRYMSG [mensaje]
+.
+Establece el mensaje que será enviado a los usuarios (vía
+notice) cuando ellos ingresen al canal. Si mensaje no se
+ingresa, nada será enviado a los usuarios cuando ingresen.
+
+[set-autolimit]
+Sintaxis: 12SET <canal> AUTOLIMIT <on/off>
+.
+Activa o desactiva la opción autolimit en el canal.
+Cuando12 AUTOLIMIT está activo, chan pone
+automáticamente un límite de usuarios en el canal
+(+l) para evitar massjoin's en el canal.
+
+[set-TOPIC]
+Sintaxis: 12SET <canal> TOPIC <texto>
+.
+Causa que12 $chanserv fije el tema del canal al indicado en
+12texto. Esta orden es muy útil en conjunción con
+12SET TOPICLOCK.
+
+[set-KEEPTOPIC]
+Sintaxis: 12SET <canal> KEEPTOPIC $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Habilita o deshabilita la opción de 12retención del tema para
+el canal. Cuando 12retención del tema está en ON
+(habilitada), el tema del canal será recordado por12 $chanserv
+aún después que el último usuario se haya retirado, y se
+restaurará la próxima vez que alguien ingrese al canal.
+
+[set-TOPICLOCK]
+Sintaxis: 12SET <canal> TOPICLOCK $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Habilita o deshabilita la opción para trabar el tópico del
+canal. Cuando 12trabar el tópico está en ON,12 $chanserv no
+habilitará el cambio del tema (tópico) excepto vía 12SET
+12TOPIC.
+
+[set-MLOCK]
+Sintaxis: 12SET <canal> MLOCK <modos>
+.
+Fija los distintos modos para el canal.12 $chanserv lo habilita a
+usted para definir determinados modos del canal y que queden
+siempre habilitados (o no). Los modos que pueden ser
+fijados son: n, t, i, m, k, l, p, s, R y M; cada
+uno de estos modos puede estar activado (ON), desactivado
+(OFF) o no fijado. Los distintos modos se indican
+exactamente como si se utilizase el comando 12/MODE; esto es,
+modo seguido de + indica activado (ON), modo seguido de -
+indica desactivado (OFF).
+.
+4¡Cuidado! Si usted fija un modo protegido por contraseña,
+como en el segundo ejemplo, también deberá fijar la opción
+12RESTRICTED para el canal (vea 12AYUDA SET RESTRICTED), o
+cualquiera que ingrese al canal cuando el mismo esté vacío,
+verá la contraseña.
+.
+Ejemplos:
+.
+12SET #canal MLOCK +nt-iklps
+Activa los modos n y t, y desactiva los modos i, k,
+l, p, y s. El modo m puede ser activado o desactivado.
+.
+12SET #canal MLOCK +knst-ilmp contraseña
+Activa los modos k, n, s, y t.
+Desactiva los modos i, l, m, y p.
+También establece "contraseña" como la contraseña del canal.
+.
+12SET #canal MLOCK +
+Elimina los modos activos; todos los modos del canal
+pueden ser libremente activados o desactivados.
+
+[set-RESTRICTED]
+Sintaxis: 12SET <canal> RESTRICTED $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Habilita o deshabilita la opción de 12acceso restringido para
+el canal. Cuando el acceso restringido está activo (ON),
+usuarios que normalmente no tienen privilegio de operadores
+cuando entran al canal (usuarios con nivel de acceso
+negativo) serán expulsados y se les prohibirá el acceso al canal.
+
+[set-SECURE]
+Sintaxis: 12SET <canal> SECURE $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Habilita o deshabilita la seguridad de12 $chanserv para el
+canal. Cuando 12SECURE está 12ACTIVO, SOLO los usuarios que
+tienen registrado sus nicks con12 $nickserv tendrán acceso
+a algunos privilegios.
+
+[set-SECUREOPS]
+Sintaxis: 12SET <canal> SECUREOPS $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Habilita o deshabilita la opción de 12operadores seguros para
+el canal. Cuando operadores seguros está activada (ON),
+usuarios que 4NO estén en la lista de usuarios del canal 4NO
+podrán obtener status de operadores
+
+[set-SECUREHALFOPS]
+Sintaxis: 12SET <canal> SECUREHALFOPS $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Habilita o deshabilita la opción de 12semi-operadores seguros para
+el canal. Cuando semi-operadores seguros está activada (ON),
+usuarios que 4NO estén en la lista de usuarios del canal 4NO
+podrán obtener status de semi-operadores
+
+[set-pbans]
+Sintaxis12 SET <canal> PBANS $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Habilita o deshabilita la opción de protección de bans por BDD.
+Si PBANS esta12 ON los bans del canal solo los podran quitar tres
+tipos de personas: Su autor, el fundador del canal, o un OPERador.
+
+[set-pmode]
+Sintaxis12 SET <canal> PMODE $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Parecido al 12MLOCK, esta opción permite que solo el fundador del canal,
+o algún OPERador de la red, puedan cambiar los modos del canal.
+Esto es útil para aquellos scripts que, por sus protecciones, están cada
+dos por tres cambiando los modos cuando CHaN pone los que hay en el MLOCK.
+
+[set-DEBUG]
+Sintaxis: 12SET <canal> DEBUG $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Habilita o deshabilita la opción de 12DEBUG para el
+canal. Cuando 12DEBUG está activada (ON),
+12 $+ $chanserv enviará un notice al canal cuando los usuarios usen los
+comandos en el canal.
+
+[set-name]
+Sintaxis:12 SET <canal> NAME <nombrecanal>
+.
+Ajusta el nombre del canal poniendo las mayúsculas para
+tener un nombre de canal estéticamente más atractivo.
+El nombre de canal ha de ser equivalente al nombre del canal
+registrado en el sistema.
+
+[LEVELS]
+Sintaxis: 12LEVELS <canal> SET <tipo> <nivel>
+12LEVELS <canal> DIS <tipo>
+12LEVELS <canal> LIST
+12LEVELS <canal> RESET
+.
+El comando 12LEVELS permite un control fino sobre los accesos
+numéricos utilizados por los canales. Con este comando,
+usted puede definir los niveles requeridos para muchas de
+las funciones de12 $chanserv $+ . Los comandos 12SET FOUNDER,
+12SET PASSWORD, así como éste comando están siempre
+restringidos al fundador.
+.
+12LEVELS SET habilita el acceso para una función o grupo de
+funciones a ser modificadas.
+.
+12LEVELS DIS deshabilita un
+privilegio automático, o deshabilita el acceso para
+cualquier otro que no sea el fundador del canal.
+.
+12LEVELS LIST muestra los niveles actuales para cada función o
+grupo de funciones.
+.
+12LEVELS RESET vuelve todos los niveles a sus valores por
+defecto, los mismos que cuando se registra por primera vez
+un canal (vea 12AYUDA ACCESS LEVELS).
+.
+Para una lista de las funciones que pueden ser establecidas,
+utilice el comando 12AYUDA LEVELS DESC.
+
+[levels-DESC]
+La siguiente lista muestra los valores/funciones por
+defecto. Note que los niveles para AUTODEOP y NOJOIN son
+los máximos niveles, mientras que todos los demás, son los
+mínimos.
+.
+12AUTOOP Status de operador de canal automático
+12AUTOHALFOP Status de semi-operador de canal automático
+12AUTOVOICE Modo +v automático
+12AUTODEOP No puede ser operador de canal
+12NOJOIN No puede entrar a canal Si está en modo restringido (RESTRICTED)
+12INVITE Permitido a usar comando INVITE
+12OPDEOP Permitido a usar comandos OP/DEOP
+12HALFOPDEHALFOP Permitido a usar comandos HALFOP/DEHALFOP
+12VOICEDEVOICE Permitido a usar comandos VOICE/DEVOICE
+12KICK Permitido a usar comando KICK
+12UNBAN Permitido a usar comando UNBAN
+12AKICK Permitido a usar comando AKICK
+12SET Permitido a usar comando SET (no siendo FUNDADOR)
+12CLEAR Permitido a usar comando CLEAR
+12RESET Permitido a usar comando RESET
+12ACC-LIST Permitido a ver lista de acceso
+12ACC-CHANGE Permitido a modificar lista de acceso
+12MEMO Permitido a ver mensajes del canal
+
+[ESPECIAL]
+Sintaxis: 12ESPECIAL <canal> nº/ALL
+12ALL hace entrar a todos los bots en el canal.
+.
+La siguiente lista muestra el número de cada bot:
+.
+1 12 $+ $centerserv
+2 12 $+ $operserv
+3 12 $+ $globalserv
+4 12 $+ $proxyserv
+5 12 $+ $helpserv
+6 12 $+ $nickserv
+7 12 $+ $noticiasserv
+8 12 $+ $chanserv
+9 12 $+ $memoserv
+10 12 $+ $cregserv
+11 12 $+ $shadowserv
+.
+4NOTA: Si deseamos que más de 1 bot entre a un canal
+tendremos que teclear 12/msg $chanserv ESPECIAL <canal> <nº-bot1> <nº-bot2>
+(separados por espacios). Si usamos 0 el especial quedará anulado.
+
+[BFOUNDER]
+Sintaxis: 12BFOUNDER <canal>
+.
+Borra el fundador del canal del UDB para que no
+se le de el modo +q al entrar. Por lo demás, $chanserv
+lo reconoce como founder del canal.
+
+[list]
+Sintaxis:12 LIST <patrón>
+.
+Lista los canales registrados que
+coincidan con el patrón indicado.
+
+[drop]
+Sintaxis:12 DROP <canal>
+.
+Borra un canal registrado de la BDD.
+
+[suspend]
+Sintaxis:12 SUSPEND <canal> <motvo>
+.
+Suspende un canal registrado, con el motivo
+indicado. Una vez suspendido, el canal será
+un canal registrado, pero chan no lo reconocerá
+y no dara @ al founder, etc.
+
+[unsuspend]
+Sintaxis:12 UNSUSPEND <canal>
+.
+Quita la suspensión de un canal.
+
+[listsuspend]
+Sintaxis:12 LISTSUSPEND
+.
+Lista los canales suspendidos.
+
+[getpass]
+Sintaxis:12 GETPASS <canal>
+.
+Muestra la contraseña de FOUNDER
+del canal indicado para identificarse mediante
+el comando 12IFENTIFY de12 $chanserv $+ .
+
+[forbid]
+Sintaxis:12 FORBID <canal> <motivo>
+.
+Previene que un canal pueda ser usado.
+Cuando un usuario intente entrar al canal,
+recibirá como mensaje el motivo por el cual
+el canal se ha prohibido.
+
+[unforbid]
+Sintaxis:12 UNFORBID <canal>
+.
+Quita la prevención de un canal para
+que pueda volver a ser usado.
+
+[listforbid]
+Sintaxis:12 LISTFORBID
+.
+Lista los canales prohibidos.
+
+[bfounder]
+Sintaxis:12 BFOUNDER <canal>
+.
+Borra el contenido N::<canal>::F
+del UDB para que el founder del
+canal no tenga modo +q al entrar.
+
+[set-deftopic]
+Sintaxis:12 SET <canal> DEFTOPIC <on/off>
+.
+Activa o desactiva la opcion de topico por defecto.
+
+[set-private]
+Sintaxis:12 SET <canal> PRIVATE <on/off>
+.
+Activa o desactiva la opcion de pivado en el canal.
+Cuando está activado, ciertos datos son ocultados en
+el comando12 INFO de $chanserv $+ .
+
+[set-noexpire]
+Sintaxis:12 SET <canal> NOEXPIRE <on/off>
+.
+Activa o desactiva la opcion12 NOEXPIRE en el canal.
+Si 12NOEXPIRE está activado, el canal no expirará
+por falta de uso.

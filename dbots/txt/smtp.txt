@@ -1,0 +1,13 @@
+Prueba de servidor SMTP para <n.red>
+Este correo ha sido enviado para probar el SMTP de <n.red>
+<s>
+Si le ha llegado este mensaje a la carpeta de entrada, significa que todo ha salido bien.
+<s>
+Y como siempre, cualquier BUG, FALLO, SUGERENCIA... enviar correo a admin@dbots.es
+<s>
+Muchas gracias por usar dBoTs3
+<s>
+<s>
+<s>
+<s>
+                                                                          www.dbots.es

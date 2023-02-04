@@ -1,0 +1,403 @@
+[cl]
+help-ca=6
+help-a=7
+help-r=8
+help-f=6
+clones=6
+kill=6
+gline=6
+preoper=6
+kline=7
+oper=7
+regenerar=7
+update=7
+restart=7
+sajoin=7
+sapart=7
+dclones=8
+RAW=8
+coadmin=8
+admin=8
+root=8
+bot=8
+tabla=8
+optimiza=8
+quit=8
+debugc=8
+backup=8
+actualiza=8
+modulo=8
+remoper=8
+fsnomask=8
+noraw=8
+fmode=8
+
+[help-ca]
+3[ Ayuda de $centerserv ]
+.
+12 $+ $centerserv es el servicio de control de la red para uso
+exclusivo de Co-Administradores, Administradores y el Root.
+.
+10- Comandos de Co-Administradores:
+.
+12CLONES Gestiona la lista de clones para una ip.
+12KILL Expulsa a un usuario de la red.
+12GLINE Gestiona la lista de G-Lines.
+12PREOPER Gestiona la lista de Pre-Operadores.
+
+[help-a]
+.
+10- Comandos de Administradores:
+.
+12KLINE Gestiona la lista de K-Lines.
+12OPER Gestiona la lista de Operadores.
+12REGENERAR Regenera la clave de cifrado de las ips.
+12UPDATE Actualiza la base de datos.
+12RESTART Reinicia los servicios de la red.
+12SAJOIN Fuerza a un usuario a entrar a un canal.
+12SAPART Fuerza a un usuario a salir de un canal.
+
+[help-r]
+.
+10- Comandos de Roots:
+.
+12DCLONES Configura el limite de clones.
+12RAW Envía un código raw al servidor.
+12COADMIN Gestiona la lista de Co-Administradores.
+12ADMIN Gestiona la lista de Administradores.
+12ROOT Gestiona la lista de Roots.
+12BOT Gestiona la lista de bots oficiales.
+12TABLA Añade o borra un registro a una tabla.
+12OPTIMIZA Optimiza las tablas de los servidores.
+12QUIT Desconecta los servicios de la red.
+12DEBUGC Muestra en un canal todos los clones que entran.
+12BACKUP Guarda una copia de seguridad de la BDD de los bots.
+12ACTUALIZA Busca actualizaciones de los dbots.
+12MODULO Gestiona los módulos de los dbots.
+12REMOPER Elimina los modos de representante de un usuario.
+12FSNOMASK Modifica los fsnomask de un usuario.
+12NORAW Impide usar comandos via RAW.
+12FMODE Fuerza los modos de un canal o usuario.
+12WMODULO Distintas opciones para los modulos disponibles en la web.
+
+[help-f]
+.
+4NOTA: Los comandos utilizados son informados en el canal
+de administradores de la red.
+
+[clones]
+Sintaxis:12 CLONESS ADD <host> <número>
+.
+Añade más clones de los permitidos al host indicado.
+También se puede especificar una IP.
+.
+Sintaxis:12 CLONES DEL <host>
+.
+Borra los clones asignados a una IP o HOST.
+.
+Sintaxis:12 CLONES LIST
+.
+Lista IPs y HOST con permiso de clones.
+
+[kill]
+Sintaxis:12 KILL <usuario> <motivo>
+.
+Explulsa a un usuario de la red con el motivo indicado.
+
+[gline]
+Sintaxis: 12GLINE ADD <+expiración> <host> <motivo>
+.
+Añade un G-Line a la IP o HOST indicado, mostrandole el motivo
+al intentar conectar al IRC. La expiración ha de ser en segundos.
+.
+Sintaxis: 12GLINE DEL <host>
+.
+Borra un G-Line de una IP o HOST.
+.
+Sintaxis: 12GLINE LIST
+.
+Lista las G-Lines añadidas.
+.
+Sintaxis: 12GLINE VIEW <host>
+.
+Muestra información sobre un G-Line a una IP o HOST.
+
+[preoper]
+Sintaxis: 12PREOPER ADD <nick>
+.
+Añade a un usuario de la red como PRE-OPERador.
+.
+Sintaxis: 12PREOPER DEL <nick>
+.
+Borra a un usuario de la red como PRE-OPERador.
+.
+Sintaxis: 12PREOPER LIST
+.
+Lista los PRE-OPERadores de la red.
+
+[kline]
+Sintaxis: 12KLINE ADD <host> <motivo>
+.
+Añade un K-Line a la IP o HOST indicado, mostrandole el motivo
+al intentar conectar al IRC.
+.
+Sintaxis: 12KLINE DEL <host>
+.
+Borra un K-Line de una IP o HOST.
+.
+Sintaxis: 12KLINE LIST
+.
+Lista las K-Lines añadidas.
+.
+Sintaxis: 12KLINE VIEW <host>
+.
+Muestra información sobre un K-Line a una IP o HOST.
+
+[oper]
+Sintaxis: 12OPER ADD <nick>
+.
+Añade a un usuario de la red como OPERador.
+.
+Sintaxis: 12OPER DEL <nick>
+.
+Borra a un usuario de la red como OPERador.
+.
+Sintaxis: 12OPER LIST
+.
+Lista los OPERadores de la red.
+
+[regenerar]
+Sintaxis: 12REGENERAR
+.
+Regenera la clave de cifrado de las IPs virtuales
+con una nueva clave aleatoria.
+
+[update]
+Sintaxis: 12UPDATE
+.
+Fuerza a los services a actualizar la base de datos.
+Una vez terminado, envía un mensaje de aviso a los
+canales de los opers y admins. Si este mensaje no llega
+puede ser que haya algún problema en la BDD.
+
+[restart]
+Sintaxis:12 RESTART
+.
+Reinicia los services.
+
+[sajoin]
+Sintaxis: 12SAJOIN <nick> <canal>
+.
+Fuerza la entrada de un usuario al canal indicado
+
+[sapart]
+Sintaxis: 12SAPART <nick> <canal>
+.
+Fuerza la salida de un canal del usuario indicado.
+
+[dclones]
+Sintaxis:12 DCLONES <número>
+.
+Establece el número de clones por defecto.
+Para poder introducir más clones de los aquí
+establecidos, ver el comando12 CLONES.
+
+[RAW]
+Sintaxis:12 RAW <texto>
+
+Envía una cadena de texto, comando, etc. directamene
+desde el servidor de los services. Este comando, usado
+de forma inadecuada, puede probocar inconsistencias,
+errores, e incluso cuelgues del servidor de IRC.
+
+[coadmin]
+Sintaxis: 12COADMIN ADD <nick>
+.
+Añade a un usuario de la red como CO-ADMINistrador.
+.
+Sintaxis: 12COADMIN DEL <nick>
+.
+Borra a un usuario de la red como CO-ADMINistrador.
+.
+Sintaxis: 12COADMIN LIST
+.
+Lista los Co-ADMINistradores de la red.
+
+[admin]
+Sintaxis: 12ADMIN ADD <nick>
+.
+Añade a un usuario de la red como ADMINistrador.
+.
+Sintaxis: 12ADMIN DEL <nick>
+.
+Borra a un usuario de la red como ADMINistrador.
+.
+Sintaxis: 12ADMIN LIST
+.
+Lista los ADMINistradores de la red.
+
+[root]
+Sintaxis: 12ROOT ADD <nick> <contraseña>
+.
+Añade a un usuario de la red como ROOT de la red.
+Para identificarse a de usar el comando 12ROOT
+de12 $operserv y su contraseña.
+.
+Sintaxis: 12ROOT DEL <nick>
+.
+Borra a un usuario de la red como ROOT de la red.
+.
+Sintaxis: 12ROOT LIST
+.
+Lista los ROOTs de la red.
+
+[bot]
+Sintaxis: 12BOT ADD <nick>
+.
+Añade a un usuario como roBOT oficial de la red.
+.
+Sintaxis: 12BOT DEL <nick>
+.
+Borra a un usuario como roBOT oficial de la red.
+.
+Sintaxis: 12BOT LIST
+.
+Lista los roBOTs oficiales de la red.
+
+[tabla]
+Sintaxis:12 TABLA <bloque>:<item>:[sub-item]:<opcion> [valor]
+.
+Manipula la BDD del UDB. Como mínimo se ha de especificar
+el bloque, el item y la opción.
+Si no se especifica el valor, el contenido es borrado.
+4NOTA: Si no se conocen los bloques del UDB, es altamente
+recomendable usar los comandos de los services para manipular
+las tablas del UDB.
+
+[optimiza]
+Sintaxis:12 OPTIMIZA <bloque>
+.
+Compacta una tabla del UDB para ahorrar espacio.
+Las tablas disponibles son:
+12N Nicks.
+12C Canales.
+12I Ips.
+12S Set.
+12K K-lines, G-Lines, etc.
+12L Links.
+
+[quit]
+Sintaxis:12 QUIT
+.
+Desconecta los services del IRC.
+
+[debugc]
+Sintaxis:12 DEBUGC ON <canal>
+.
+Activa el debug de clones en el canal indicado.
+Cuando debugc está activo,2 $operserv
+envía información de usuarios que conectan
+desde la misma IP o HOST.
+.
+Sintaxis:12 DEBUGC OFF
+.
+Desactiva de debug de clones.
+
+[backup]
+Sintaxis:12 BACKUP
+.
+Realiza una copia de seguridad de la BDD.
+
+[actualiza]
+Sintaxis:12 ACTUALIZA
+.
+Busca actualizaciones de los dBoTs.
+
+[modulo]
+Sintaxis:12 MODULO ADD <nombre>
+.
+Carga el módulo indicado.
+.
+Sintaxis:12 MODULO DEL <nombre>
+.
+Descarga el módulo indicado.
+.
+Sintaxis:12 MODULO LIST
+.
+Lista los módulos de los que se dispone.
+.
+Sintaxis:12 MODULO WLIST
+.
+Lista los modulos disponibles ONLINE
+.
+Sintaxis:12 MODULO INFO <nombre>
+.
+Muestra información relacionada con el
+módulo indicado (nick, modos...).
+.
+Sintaxis:12 MODULO INSTALL
+.
+Descarga e instala el modulo indicado.
+.
+Sintaxis:12 MODULO UNINSTALL
+.
+Desinstala el modulo indicado.
+.
+Sintaxis:12 MODULO UPDATE nombre
+.
+Busca actualizaciones para el módulo indicado
+
+[remoper]
+Sintaxis:12 REMOPER <nick>
+.
+Elimina posibles modos de IRCop, ADMIN
+u OPER del usuario indicado.
+
+[fsnomask]
+Sintaxis:12 FSNOMASK <usuario> <+/-fsnomask>
+.
+Modifica las máscaras de un usuario del IRC.
+Las máscaras disponibles son:
+12c Conexiones locales.
+12F Conexiones remotas (Menos servidores/services),
+12f Notificaciones de flood.
+12k Notificaciones de desconexiones por forzadas. *
+12e Notificaciones de información.
+12j Notificaciones de medidas.
+12v Notificaciones de hosts virtuales.
+12G Notificaciones de G-Lines / Shuns.
+12n Notificaciones de cambio de nicks locales.
+12N Notificaciones de cambio de nicks remotos.
+12q Notificaciones de denegación de nicksdeny nick (Q-Line).
+12s Notificaciones del servidor. *
+12S Notificaciones del filtro de spam.
+12o Notificaciones de identifiaciones de OPERadores de red.
+.
+* Disponible para usuarios que no son OPERs.
+
+[noraw]
+Sintaxis:12 NORAW ADD comando
+.
+Añade un comando a la base da datos de comandos
+que no se podrán ejecutar via RAW.
+.
+Sintaxis:12 NORAW DEL comando
+.
+Borra un comando de la base da datos de comandos
+que se pueda volver a ejecutar via RAW.
+.
+Sintaxis:12 NORAW LIST
+.
+Lista los comandos en la base de datos que no se
+pueden usar via RAW.
+
+[fmode]
+Sintaxis:12 FMODE <nick> +/- modos
+.
+Fuerza los modos de un usuario, poniendo
+o quitando los modos indicados.
+.
+Sintaxis:12 FMODE <#canal> +/- modos
+.
+Fuerza los modos de un canal, poniendo
+o quitando los modos indicados.

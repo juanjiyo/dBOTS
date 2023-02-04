@@ -1,0 +1,40 @@
+%actualizar si
+%auto.conectar no 5
+%conf.canal.ayuda #opers_help
+%conf.canal.admins #admins
+%conf.canal.opers #opers
+%conf.centerserv CeNTeR - - +iorKkBdH Servicio de Control
+%conf.chanserv CHaN - - +iorKkBdH Servicio de Canales
+%conf.clink openaccess
+%conf.cregserv CReG - - +iorKkBdH Servicio de Registro de Canales
+%conf.debugserv DeBuG - - +iorKkBdH Debug de servidores
+%conf.desc Services de la red HopTo
+%conf.globalserv GLoBaL - - +iorKkBdH Servicio de Mensajería Global
+%conf.helpserv HeLP - - +iorKkBdH Servicio de Ayuda
+%conf.ip 127.0.0.1
+%conf.memoserv MeMO - - +iorKkBdH Servicio de Mensajería
+%conf.metodo privmsg
+%conf.nickserv NiCK - - +iorKkBdH Servicio de Nicks
+%conf.noticias si
+%conf.noticiasserv NoTiCiaS - - +iorKkBdH Servicio de Noticias
+%conf.operserv OPeR - - +iorKkBdH Servicio de Operadores
+%conf.pinv invitado-
+%conf.proxyserv PRoXy - - +iorKkBdH Escaner de Puertos
+%conf.puerto 4400
+%conf.red nombre.red
+%conf.root nick_root
+%conf.servidor deep.space
+%conf.shadowserv SHaDoW - - +iorKkBdHD Guardián de modos de canal
+%conf.smtp.estado on
+%conf.smtp.login tu@correo
+%conf.smtp.password pass
+%conf.smtp.smtp smtp.correo.es
+%conf.tbots centerserv operserv globalserv proxyserv noticiasserv helpserv nickserv memoserv chanserv cregserv shadowserv
+%debugv si
+%i.bots 1167055940
+%ult.act Fri, 18 Sep 2020 22:49:08 GMT
+%ultimo-a.t
+%v 3
+-
+%opt.all sip
+%opt.byte 0

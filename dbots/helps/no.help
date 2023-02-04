@@ -1,0 +1,124 @@
+[cl]
+help=1
+help-a=7
+help-f=7
+alta=1
+baja=1
+email=7
+motd=7
+nick=7
+servidor=7
+representantes=7
+noticias=7
+
+[help]
+3[ Ayuda de $noticiasserv ]
+.
+12 $+ $noticiasserv es el servicio de noticias de la red.
+Recibe en tu correo novedades de la web o de la red en tu e-mail.
+.
+12ALTA Da de alta tu nick en el servidor de noticias.
+12BAJA Da de baja tu nick en el servidor de noticias.
+.
+4NOTA: Hay que tener el nick registrado e identificado
+para poder utilizar este servicio.
+
+[help-a]
+.
+10- Comandos de Administradores:
+.
+12EMAIL Envía un e-mail a todos los usuarios dados de alta.
+12MOTD Añade o borra un mensaje de entrada.
+12NICK Añade o borra un mensaje de entrada a través de un nick.
+12SERVIDOR Añade o borra un mensaje de entrada a los usuarios de un servidor.
+12REPRESENTANTES Añade o borra un mensaje de entrada para representantes.
+12NOTICIAS Lee las noticias de la web de los bots.
+
+[help-f]
+.
+4NOTA: Los comandos utilizados son informados en el canal
+de operadores y administradores de la red.
+
+[alta]
+Sintaxis:12 ALTA
+.
+Te da de alta en el servicio de noticias.
+Cuando un usuario está dado de alta,
+se le envían correos con avisos de la
+administración de la red.
+
+[baja]
+Sintaxis:12 BAJA
+.
+Te da de baja en el servici ode noticias.
+
+[email]
+Sintaxis:12 EMAIL <mensaje>
+.
+Envía un mensaje por correo a todos
+los usuarios dados de alta en el servicio
+de noticias de la red.
+
+[motd]
+Sintaxis:12 MOTD ADD <mensaje>
+.
+Añade un mensaje de entrada para que
+lo puedan ver los usuarios al entrar al IRC.
+.
+Sintaxis:12 MOTD DEL <numero>
+.
+Borra el motd indicado.
+.
+Sintaxis:12 MOTD LIST
+.
+Lista los motd's añadidos.
+
+[nick]
+Sintaxis:12 NICK ADD <nick> <mensaje>
+.
+Establece un mensaje que será mostrado con
+el nick indicado a los usuarios cuando conecten
+a cualquier servidor del IRC.
+.
+Sintaxis:12 NICK DEL <nick>
+.
+Elimina el mensaje de entrada enviado por el
+el nick indicado.
+.
+Sintaxis:12 NICK LIST
+.
+Lista los bots y mensajes que envían.
+.
+4NOTA: Solo puede haber un mensaje por bot.
+
+[servidor]
+Sintaxis:12 SERVIDOR <servidor> <mensaje>
+.
+Añade un mensaje de entrada para los usuarios
+que se conecten mediante el servidor indicado.
+.
+Sintaxis:12 SERVIDOR <servidor>
+.
+Borra el mensaje de entrada para los usuarios
+que se conecten mediante el servidor indicado.
+
+[representantes]
+Sintaxis:12 REPRESENTANTES ADD <mensaje>
+.
+Añade un mensaje que se mostrara a los representantes
+cuando se conecten al IRC.
+.
+Sintaxis:2 REPRESENTANTES DEL <numero>
+.
+Borra un mensaje que se mostraría a los representantes
+cuando se conectásen al IRC.
+.
+Sintaxis:12 REPRESENTANTES LIST
+.
+Lista los mensajes que se mostrarán a los
+representantes de la red al conectar al IRC.
+
+[noticias]
+Sintaxis:12 NOTICIAS
+.
+Lee y muestra las noticias de los dBoTs.

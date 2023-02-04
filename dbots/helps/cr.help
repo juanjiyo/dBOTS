@@ -1,0 +1,258 @@
+[cl]
+help=1
+help-po=4
+help-o=5
+help-ca=6
+help-a=7
+help-f=4
+REGISTRA=1
+APOYA=1
+CANCELA=1
+ESTADO=1
+OP=1
+APOYOS=1
+info=4
+lista=4
+marca=5
+admin=6
+oficial=6
+comercial=6
+acepta=7
+deniega=7
+libera=7
+reset=7
+
+[help]
+3[ Ayuda de $cregserv ]
+.
+12 $+ $cregserv le permite realizar una petición de registro de un canal
+$iif($l.conf(cregserv,apoyos) >= 1,e introducir a éste en la fase de registro. Para poder registrar)
+$iif($l.conf(cregserv,apoyos) >= 1,un canal $+ $chr(44) necesita el apoyo de12 $l.conf(cregserv,apoyos) nicks registrados. Los siguientes)
+$iif($l.conf(cregserv,apoyos) < 1,e introducir a éste en la fase de registro. Los siguientes)
+comandos le permiten manejar el pre-registro de un canal; para
+utilizarlos, escriba 12/msg $cregserv comando. Para más información
+sobre un comando específico, escriba 12/msg $cregserv AYUDA comando.
+.
+12REGISTRA Realiza una petición de registro de un canal.
+12APOYA Muestra su apoyo al registro de un canal.
+12CANCELA Cancela una petición de registro de un canal.
+12ESTADO Permite consultar el estado de un canal.
+12OP $cregserv te da OP en el canal que estés registrando.
+12APOYOS Lista los apoyos recibidos por un canal o
+los registros/apoyos emitidos por un usuario.
+.
+4AVISO: $cregserv realiza únicamente funciones de pre-registro de
+un canal, siendo cada petición revisada por la administración
+de la red. $l.conf(otras,nombrered) se reserva el derecho a denegar el registro a
+cualquier canal si sus usuarios se comportan indebidamente o si
+el canal no se ajusta a las normas de registro.
+
+[help-po]
+.
+10- Comandos de Pre-Operadores:
+.
+12INFO Devuelve información ampliada sobre un canal.
+12LISTA Lista los canales en registro, pendientes o denegados.
+
+[help-o]
+.
+10- Comandos de Operadores:
+.
+12MARCA Añade una nota al histórico de un canal.
+
+[help-a]
+.
+10- Comandos de Administradores de $cregserv $+ :
+.
+12ACEPTA Acepta la petición de registro de un canal.
+12DENIEGA Deniega la petición de registro de un canal.
+12LIBERA Libera un canal denegado.
+12RESET Elimina un canal y lo reinicia.
+
+[help-ca]
+.
+10- Comandos de Co-Administradores:
+.
+12ADMIN Gestiona la lista de admins de $cregserv $+ .
+12OFICIAL Registra un canal con status OFICIAL.
+12COMERCIAL Registra un canal con status COMERCIAL.
+
+[help-f]
+.
+4NOTA: Algunos comandos utilizados son informados en el canal
+de operadores y administradores de la red.
+
+[REGISTRA]
+Sintaxis: 12REGISTRA <canal> <contraseña> <descripción>
+.
+Realiza una petición de registro de un nuevo canal.
+.
+El canal que intenta registrar no puede estar ya previamente
+registrado. Consulte el comando 12ESTADO para
+obtener información sobre como conocer el estado actual de un
+canal. La contraseña que proporcione servirá para que pueda
+identificarse como fundador del canal sin estar con su nick
+habitual. El último parámetro debe ser una descripción del
+propósito del canal.
+.
+Para realizar una petición de registro, el nick desde el que la
+ha hecho debe estar registrado, y si el registro es aceptado, ese
+nick pasará a ser el fundador del canal.
+.
+$iif($l.conf(cregserv,apoyos),Para que una petición de registro sea válida $+ $chr(44) necesita el apoyo de)
+$iif($l.conf(cregserv,apoyos),al menos12 $l.conf(cregserv,apoyos) personas en un plazo de siete días $+ $chr(44) no contando)
+$iif($l.conf(cregserv,apoyos),como apoyos válidos distintos nicks registrados con el mismo e-mail.)
+$iif($l.conf(cregserv,apoyos),Si en ese plazo no recibe los apoyos necesarios $+ $chr(44) el canal expirará)
+$iif($l.conf(cregserv,apoyos),y será necesaria la intervención de un administrador de la red para)
+$iif($l.conf(cregserv,apoyos),que se pueda proceder a una petición de registro de nuevo. Consulte)
+$iif($l.conf(cregserv,apoyos),el comando APOYA (12/msg $cregserv AYUDA APOYA) para obtener)
+$iif($l.conf(cregserv,apoyos),información sobre como se puede apoyar el registro de un canal.)
+$iif($l.conf(cregserv,apoyos),.)
+4NOTA: No se puede registrar mas de un canal a la vez.
+
+[APOYA]
+Sintaxis: 12APOYA <canal> [verificación]
+.
+Muestra su apoyo a la petición de registro de un canal.
+.
+El canal que introduzca no puede estar ya registrado, sino que debe
+estar en un estado de registro pendiente en el bot12 $cregserv $+ . $chr(40) $+ Debe haber
+utilizado el comando 12REGISTRA para iniciar este proceso) Consulte el
+comando 12ESTADO (12/msg $cregserv AYUDA ESTADO) para obtener información
+sobre como conocer el estado de un canal.
+.
+La contraseña que introduzca no debe ser la contraseña del canal,
+sino la contraseña que12 $cregserv le proporcionará cuando ejecute
+12/msg $cregserv APOYA #canal, con el propósito de verificar su aprobación
+al registro del canal.
+.
+Para que un apoyo sea válido, su nick debe estar registrado y no
+puede haber apoyado ese canal previamente desde ese nick.
+De esta manera,12 $cregserv le informará de si su apoyo ha sido procesado.
+
+[CANCELA]
+Sintaxis: 12CANCELA <canal>
+.
+Cancela la petición de un registro de canal. Solo el fundador (el que
+ha hecho la petición de registro) puede ejecutar este comando.
+
+[ESTADO]
+Sintaxis: 12ESTADO <canal>
+.
+Muestra el estado actual del canal que especifique.
+.
+Los posibles estados de un canal son los siguientes:
+.
+12ENREGISTRO El canal no ha obtenido todavía el numero
+necesario de apoyos para que pueda ser procesada
+la petición.
+12PENDIENTE La petición de registro del canal está siendo
+revisada por la administración de canales de la red.
+12DENEGADO La petición de registro ha sido denegada.
+12REGISTRADO El canal ya está actualmente registrado.
+12SUSPENDIDO El registro del canal ha sido suspendido.
+12COMERCIAL Es un canal comercial.
+12OFICIAL Es un canal oficial.
+12FORBID El canal está prohibido.
+
+[OP]
+Sintaxis:12 OP <canal>
+.
+Te da OP en el canal que estés registrando. Debes de ser el que
+ha hecho la petición de registro del canal para poder ejecutar este comando.
+
+[APOYOS]
+Sintaxis: 12APOYOS $chr(123) $+ canal $chr(124) nick $+ $chr(125)
+.
+Lista los nicks de las personas que apoyan la petición de
+registro de un canal si especificamos el nombre de un canal, o
+los registros y/o apoyos que ha emitido un/os usuario si
+especificamos un nick.
+.
+4NOTA: Sólo es posible listar los nicks de las personas que apoyan
+el canal si se está utilizando el nick que env¡o la petición de
+registro (el futuro fundador del canal), y solo es posible
+listar los apoyos/registros del nick que estamos utilizando.
+
+[info]
+Sintaxis:12 INFO <canal>
+.
+Muestra información relacionada
+con un canal en pre-registro.
+
+[lista]
+Sintaxis:12 LISTA
+.
+Muestra los canales que están
+en proceso de registro.
+
+[marca]
+Sintaxis:12 MARCA ADD <canal> <texto>
+.
+Añade una marca, o comentario, a un canal
+en proceso de registro.
+.
+Sintaxis:12 MARCA DEL <canal> <número>
+.
+Elimina una marca de un canal en registro.
+
+[acepta]
+Sintaxis:12 ACEPTA <canal>
+.
+Acepta el pre-registro del canal
+para que pase a ser un canal
+registrado y reconocido por12 $chanserv $+ .
+
+[oficial]
+Sintaxis:12 OFICIAL <canal> <contraseña> <descripción>
+.
+Registra un canal como canal oficial de la red.
+La contraseña y descripción son parámetros
+iguales que el comando 12registra.
+
+[comercial]
+Sintaxis:12 COMERCIAL <canal> <fundador> <conraseña> <descripción>
+
+Registra un canal como canal comercial en la red.
+El fundador indicado pasará a ser fundador del canal
+como si él mismo lo hubiese registrado. La contraseña
+y la descripción deberán ser aportados por el futuro
+dueño del canal.
+
+[admin]
+Sintaxis:12 ADMIN ADD <nick>
+.
+Añade un nick como ADMINistrador de12 $cregserv $+ .
+.
+Sintaxis:12 ADMIN DEL <nick>
+.
+Borra un nick como ADMINistrador de12 $cregserv $+ .
+.
+Sintaxis:12 ADMIN LIST
+.
+Muestra los ADMINistradores agregados a12 $cregserv $+ .
+
+[deniega]
+Sintaxis:12 DENIEGA <canal> <motivo>
+.
+Deniega el pre-registro del canal.
+En el motivo se ha de especificar porqué
+el canal no es apto para el registro $+ $chr(44) como
+por ejemplo: Una descripción poco clara
+de la temática del canal.
+
+[libera]
+Sintaxis:12 LIBERA <canal>
+.
+Libera un canal previamente denegado.
+Al ser liberado el canal $+ $chr(44) este puede
+ser puesto en pre-registro de nuevo.
+
+[reset]
+Sintaxis:12 RESET <canal>
+.
+Resetea el canal especificado.
+Cuando un canal es reseteado, lo que se hace
+es DROPearlo de la base de datos y volverlo
+a registrar $+ $chr(44) reseteando así
+la lista de registros, etc.

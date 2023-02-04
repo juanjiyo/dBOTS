@@ -1,0 +1,59 @@
+[cl]
+help=6
+ignora=6
+msg=6
+
+[help]
+3[ Ayuda de $proxyserv ]
+.
+12 $+ $proxyserv se encarga de analizar todas
+las conexiones de la red y expulsar las que sean
+con proxys.
+.
+10- Comandos de Co-Administradores:
+.
+12IGNORA Gestiona la lista de ips que no serán escaneadas.
+12MSG Configura el mensaje privado que manda $proxyserv $+ .
+12MODE Configura el modo de interactuar de $proxyserv $+ .
+.
+4AVISO: La expulsión de una conexión con proxy
+será indefinida excepto si es retirada por un administrador.
+
+[ignora]
+Sintaxis: 12IGNORA ADD <ip>
+.
+Añade una ip a la lista de ips que no
+serán escaneadas al conectar al IRC.
+.
+Sintaxis:12 IGNORA DEL <ip>
+.
+Borra una ip de la lista de IPs excluidas.
+.
+Sintaxis:12 IGNORA LIST
+.
+Lista las IPs que no serán escaneadas.
+
+[msg]
+Sintaxis:12 MSG
+.
+Permite ver el mensaje privado que manda $proxyserv $+ .
+.
+Sintaxis:12 PRIVMSG <mensaje>
+.
+Cambia el mensaje que manda $proxyserv por privado a un
+usuario cuando se detecta un puerto de la BDD abierto en
+su conexión de internet.
+.
+4NOTA: Se pueden espeficicar 3 palabras genericas
+las cuales son remplazadas en el mensaje por su correspondiente.
+Las palabras son12 <nick> <ip> <dnsbl> 
+
+[mode]
+Sintaxis:12 MODE <opcion>
+.
+Configura el modo de interactuar de $proxyserv $+ .
+Opciones diponibles:
+.
+12ALL Escaneará a todos los usuarios que conecten al IRC
+12NOREG Solo escaneará los usuarios que conecten con un
+nick no registrado.

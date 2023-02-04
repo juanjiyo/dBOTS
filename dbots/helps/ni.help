@@ -1,0 +1,465 @@
+[cl]
+help=1
+help-po=4
+help-o=5
+help-co=3
+help-a=7
+help-f=4
+REGISTRA=1
+register=1
+IDENTIFY=1
+SET=1
+set-PASSWORD=1
+set-URL=1
+set-EMAIL=1
+set-EMAILR=1
+set-tlf=1
+set-KILL=1
+set-VHOST=
+set-FIRMA=1
+set-QUIT=1
+set-PRIVATE=1
+INFO=1
+ESTADO=1
+STATUS=1
+VERIFICA=1
+VERIFY=1
+NOEXPIRE=1
+SENDPASS=1
+SENDNEWPASS=1
+blackmail=7
+validar=1
+vreg=7
+list=4
+dropvhost=4
+viewip=4
+suspend=5
+unsuspend=5
+listsuspend=5
+marca=5
+drop=5
+swhois=6
+vhost=6
+forbid=6
+unforbid=6
+listforbid=6
+getpass=7
+marcadel=7
+msgnr=7
+automode=7
+
+[help]
+3[ Ayuda de $nickserv ]
+.
+12 $+ $nickserv te permite registrar tu nick en la red
+Si el nick no se utiliza durante12 $l.conf(nickserv,caducanicks) días, caducará el registro.
+Los siguientes comandos permiten el registro y mantenimiento de
+nicks; para utilizarlos, escribe 12/msg $nickserv comando.
+.
+para más información sobre un comando específico, escribe
+12/msg $nickserv AYUDA comando.
+.
+12REGISTRA Registra tu nick en la red.
+12IDENTIFY Identificarse con tu contraseña.
+12SET Ajusta opciones de tu nick.
+12INFO Muestra información de un nick.
+12ESTADO Muestra el estado de un nick.
+12VERIFICA Nos informa si un nick es representante de la red o no.
+12NOEXPIRE Que no expire tu nick en tus vacaciones.
+12SENDNEWPASS Envía un nuevo password al correo del usuario.
+12SENDPASS Manda la contraseña de un nick al mail.
+.
+4NOTA: Este servicio está diseñado para proveer un modo en
+que los usuarios del IRC aseguran que su identidad no sea
+suplantada. Su intención no es facilitar el "robo"
+de nicks o otras acciones mal intencionadas.
+
+[help-po]
+.
+10- Comandos de Pre-Operadores:
+.
+12LIST Muestra la lista de nicks registrados.
+12DROPVHOST Elimina una ip virtual de un nick.
+12VIEWIP Ver ip de un usuario.
+
+[help-o]
+.
+10- Comandos de Operadores:
+.
+12SUSPEND Suspende un nick.
+12UNSUSPEND Reactiva un nick suspendido.
+12LISTSUSPEND Lista de los nicks suspendidos.
+12MARCA Añade una marca al historial de un nick.
+12DROP Elimina un nick.
+
+[help-ca]
+.
+10- Comandos de Co-Administradores:
+.
+12SWHOIS Añade o borra el SWHOIS de un nick.
+12VHOST Cambia la máscara virtual de un nick.
+12FORBID Evita el uso de un nick.
+12UNFORBID Elimina un forbid.
+12LISTFORBID Lista de los nicks prohibidos.
+
+[help-a]
+.
+10- Comandos de Administradores:
+.
+12GETPASS Muestra una contraseña.
+12MARCADEL Borra una marca de un nick.
+12MSGNR Mensaje de entrada para nicks identificados.
+12AUTOMODE Fija modos automáticos a un nick (Útil para bots de usuarios)
+12BLACKMAIL Bloquea dominios de correos en los que registrar nicks.
+12VREG Validación de registro de usuarios.
+
+[help-f]
+.
+4NOTA: Algunos comandos utilizados son informados en el canal
+de operadores y administradores de la red.
+
+[REGISTRA]
+Sintaxis: 12REGISTRA <correo@electronico>
+.
+Solicita el registro de un nick en 12 $+ $nickserv $+ .
+.
+La dirección de e-mail ha de ser una dirección real,
+para que puedas recibir el mensaje con la contraseña
+temporal de acceso en dicho buzón. El registro de nicks
+se permite sobre cualquier tipo de correo bien sea una 
+cuenta POP o WebMail, gratuito o de pago con la única
+restricción de registrar12 $l.conf(nickserv,rmail) nicks por e-mail.
+.
+Una vez identificado siguiendo los pasos indicados
+en el mensaje que te enviaremos, podrás utilizar el
+comando 12SET para configurar los parámetros de
+tu nick como desees.
+.
+[register]
+Usa 12/msg $nickserv REGISTRA <correo@electronico.es>
+
+[IDENTIFY]
+Sintaxis: 12IDENTIFY <contraseña>
+.
+Notifica a12 $nickserv que usted es el verdadero dueño de este
+nick. Muchos de los comandos requieren que te identifiques
+con este comando antes de poder utilizarlos. La
+contraseña debe ser la misma que utilizo con el comando
+12REGISTRA.
+
+[SET]
+Sintaxis: 12SET <opción> <parámetros>
+.
+Ajusta varios parámetros del nick. Las opciones son:
+.
+12PASSWORD Cambia la contraseña para tu nick.
+12URL Asocia un URL con tu nick.
+12EMAIL Asocia una dirección de e-mail con tu nick.
+12EMAILR Cambia la dirección de e-mail de registro de tu nick.
+12TLF Asocia un numero de teléfono con tu nick.
+12KILL Activa o desactiva la protección de kill.
+12VHOST Asigna una ip virtual personalizada a tu nick.
+12FIRMA Asocia a tu nick una firma personalizada.
+12QUIT Esconde o muestra tu último mensaje de salida.
+12PRIVATE Oculta tu información en el INFO de $nickserv $+ .
+.
+Escribe 12/msg $nickserv AYUDA SET <opción> para más información
+sobre una opción específica.
+$iif($s.n($o) >= 6,.)
+$iif($s.n($o) >= 6,10- Comandos de Co-Administradores:)
+$iif($s.n($o) >= 6,.)
+$iif($s.n($o) >= 6,12NOEXPIRE Permite marcar un nick para que no expire.)
+$iif($s.n($o) >= 6,12MAILR Cambia el e-mail de registro de un nick.)
+$iif($s.n($o) >= 6,.)
+$iif($s.n($o) >= 6,4NOTA: Algunos comandos utilizados son informados en el canal)
+$iif($s.n($o) >= 6,de operadores y administradores de la red.)
+
+[set-PASSWORD]
+Sintaxis: 12SET PASSWORD <nueva-contraseña>
+.
+Cambia la contraseña que utiliza para identificarse como el
+dueño del nick.
+
+[set-URL]
+Sintaxis: 12SET URL <url>
+.
+Asocia un URL dado con tu nick. Este URL será mostrado
+cuando solicite información de su nick con el comando 12INFO.
+
+[set-EMAIL]
+Sintaxis: 12SET EMAIL <e-mail>
+.
+Asocia la dirección de e-mail dada con tu nick. Esta
+dirección será mostrada cuando alguien solicite información
+sobre su nick con el comando 12INFO.
+
+[set-EMAILR]
+Sintaxis: 12SET EMAILR <e-mail>
+.
+Cambia la dirección de e-mail de registro de tu nick. Esta
+dirección es la que ha especificado al registrar su nick
+y es la que se usará para enviarle la contraseña de su nick
+en caso de que la pierda.
+
+[set-tlf]
+Sintaxis: 12SET TLF <teléfono>
+.
+Asocia un teléfono dado con tu nick. Este teléfono será mostrado
+cuando solicite información de su nick con el comando 12INFO.
+
+[set-KILL]
+Sintaxis: 12SET KILL $chr(123) $+ ON $chr(124) QUICK $chr(124) OFF $+ $chr(125)
+.
+Activa o desactiva la protección de kill para su nick. Con
+protección de kill activada, si algún otro usuario intenta
+utilizar tu nick, se le dará un minuto para que cambie a
+otro, si no será cambiado forzosamente por $nickserv $+ .
+.
+Si selecciona 12QUICK, el usuario solo tendrá 20 segundos para
+cambiar de nick en lugar de lo usual (60 segundos).
+
+[set-VHOST]
+Sintaxis: 12SET VHOST <ip-deseada>
+.
+Asocia a tu nick una ip virtual personalizada la cual se te
+pondrá en el momento en el cual te identifiques ante los
+servicios de la red. La V-Host tendrá la forma de
+"texto.sufijo" siendo texto la cadena deseada.
+La cadena <texto> puede contener caracteres de la a-z, A-Z.
+
+[set-FIRMA]
+Sintaxis: 12SET FIRMA <texto>
+.
+Asocia a tu nick una firma personalizada la cual se
+mostrará en el momento en el cual te hagan un INFO.
+
+[set-QUIT]
+Sintaxis: 12SET QUIT $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Este comando evita que en el INFO de tu nick sea mostrado
+o no tu último mensaje de salida.
+
+[set-PRIVATE]
+Sintaxis: 12SET PRIVATE $chr(123) $+ ON $chr(124) OFF $+ $chr(125)
+.
+Este comando evita que en el INFO de tu nick sea mostrada
+o no su información del nick.
+
+[INFO]
+Sintaxis: 12INFO <nick>
+.
+Muestra información sobre un nick dado, como el quien es
+el dueño, ultima dirección utilizada y hora, y las
+diferentes opciones del nick.
+
+[ESTADO]
+Sintaxis: 12ESTADO <nick>
+.
+Informa si el usuario de un nick es reconocido como el dueño
+de el mismo. La respuesta tiene el siguiente formato:
+.
+12nick 12código-de-status
+.
+donde 12nick es el nick enviado con el comando,
+12código-de-status es uno de los siguientes:
+.
+0 (No conectado)
+1 (Conectado, no registrado) $chr(124) (Conectado, no identificado)
+2 (Suspendido)
+3 (Identificado)
+.
+El estado de un nick puede ser visto por cualquier usuario.
+
+[STATUS]
+Usa 12STADO <nick>
+
+[VERIFICA]
+Sintaxis: 12VERIFICA <nick>
+.
+Nos informa si un nick es representante de la red o no.
+Los posibles "status" pueden ser:
+.
+- Usuario (no representante)
+- Pre-Operador (representante)
+- Operador (representante)
+- Co-Admin (representante)
+- Admin (representante)
+
+[VERIFY]
+Usa 12VERIFICA <nick>
+
+[NOEXPIRE]
+Sintaxis: 12NOEXPIRE <confirmación>
+.
+Activa el No-Expire sobre el nick que tengas puesto. El
+servicio de No-Expire permite que tu nick no expire
+en el plazo de $l.conf(nickserv,noexpire) días, pudiéndote ir de vacaciones
+sin preocuparte de tu nick. Tras la utilización del No-Expire
+deberán pasar $l.conf(nickserv,enoexpire) días antes de volver a utilizarlo.
+
+[SENDPASS]
+Sintaxis: 12SENDPASS <nick>
+.
+Permite enviar el password de un usuario al correo que especifico en el registro de el nick.
+Este comando solo puede ser usado 1 vez por nick cada 24horas.
+
+[SENDNEWPASS]
+Sintaxis:12 SENDNEWPASS
+.
+Genera una contraseña de alta calidad para el nick que
+ejecuta el comando y la envía al e-mail asociado a ese nick.
+
+[blackmail]
+Sintaxis:12 BLACKMAIL ADD dominio
+12          BLACKMAIL DEL número
+12          BLACKMAIL DEL all
+12          BLACKMAIL LIST
+.
+Si se usa 12ADD añade un dominio de correos
+en los que no se podrá registrar un nick.
+.
+Para borrarlo, logicamente se usa 12DEL y el número que 
+aparece en el 12LIST así se podrá volver a registrar
+nicks en correos de ese dominio. Si se escribre ALL, se
+borran todas las entradas.
+.
+Para ver los dominios bloqueados se usa 12LIST.
+
+[validar]
+Sintaxis:12 VALIDAR <numero>
+.
+Valida, en caso necesario, el registro de un nick
+en el correo indicado. El número se proporciona
+al ejecutar el comando 12REGISTRA.
+
+[vreg]
+Sintaxis:12 VREG ON
+.
+Actíva la opción de validación para el registro de usuarios.
+Cuando12 VREG está ON,12 $nickserv muestra
+un número formado en 5 lineas para que el usuario valide
+su registro. Útil para evitar registro de clones.
+.
+Sintaxis:12 VREG OFF
+Desactíva la opción de validación para el registro de usuarios.
+
+[list]
+Sintaxis:12 LIST <patrón>
+.
+Genera una lista de los usuarios registrados
+basándose en el patrón indicado.
+
+[dropvhost]
+Sintaxis:12 DROPVHOST <usuario>
+.
+Elimina el vhost del usuario indicado.
+
+[viewip]
+Sintaxis:12 VIEWIP <usuario>
+.
+Muestra la IP o HOST desde el que
+conecta el usuario indicado.
+
+[suspend]
+Sintaxis:12 SUSPEND <usuario> <motivo>
+.
+Suspende el nick del usuario indicado, mostrandole
+el motivo cuando vaya a usar su nick.
+Un nick suspendido no puede, entre otras cosas:
+Recibir sus accesos a canales (+aohv) mediante
+12 $+ $chanserv $+ , enviar menos, etc.
+
+[unsuspend]
+Sintaxis:12 UNSUSPEND <usuario>
+.
+Quita la suspensión de un usuario.
+
+[listsuspend]
+Sintaxis:12 LiSTSUSPEND
+.
+Lista todos los usuarios que tienen el nick suspendido.
+
+[marca]
+Sintaxis:12 MARCA <usuario> <mensaje>
+.
+Añade una marca a un usuario, para poder ser vista
+por los representantes de la red al usar el comando
+12INFO sobre el usuario.
+
+[drop]
+Sintaxis:12 DROP <nick>
+.
+Borra un nick como nick registrado.
+Una vez usado este comando, el nick
+podrá volver a ser registrado.
+
+[swhois]
+Sintaxis:12 SWHOIS <nick> <mensaje>
+.
+Añade una linea extra al whois de un usuario,
+en la que se mostrará el mensaje indicado.
+.
+4NOTA: Solo se puede terner un12 SWHOIS
+a la vez por usuario.
+
+[vhost]
+Sintaxis:12 VHOST <usuario> <vhost>
+.
+Cambia el vhost del usuario indicado.
+
+[forbid]
+Sintaxis:12 FORBID <nick> <motivo>
+.
+Prohibe la utilización del nick indicado.
+Cuando alguien quiere poner un nick prohibido,
+se le muestra el mensaje de prohibición.
+.
+4NOTA: Si se prohibe un nick registrado,
+este será borrado.
+
+[unforbid]
+Sintaxis:12 UNFORBID <nick>
+.
+Elimina la prohibición sobre un nick.
+Una vez quitado el forbid, el nick puede
+ser registrado por cualquier usuario.
+
+[listforbid]
+Sintaxis:12 LISTFORBID
+.
+Lista los nicks que están prohibídos.
+
+[getpass]
+Sintaxis:12 GETPASS <nick>
+.
+Devuelve la contraseña del nick indicado.
+
+[marcadel]
+Sintaxis:12 MARCADEL <nick> <numero>
+.
+Borra una marca previamente añadida.
+
+[msgnr]
+Sintaxis:12 MSGNG BDD <mensaje>
+.
+Modifica el mensaje de identificación de nicks con modo +r
+.
+Sintaxis:12 MSGNG BDD
+.
+Borra el mensaje de identificación de nicks con modo +r
+.
+Sintaxis:12 MSGNG NOBDD <mensaje>
+.
+Modifica el mensaje de identificación de nicks sin modo +r
+.
+Sintaxis:12 MSGNG NOBDD
+.
+Borra el mensaje de identificación de nicks sin modo +r
+
+[automode]
+Sintaxis:12 AUTOMODE <nick> [modos]
+Establece los modos que se pondrán automáticamente a un usuario.
+.
+Sintaxis:12 AUTOMODE <nick>
+.
+Elimina los modos que se pondrán automáticamente a un usuario.

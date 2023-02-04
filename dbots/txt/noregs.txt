@@ -1,0 +1,12 @@
+Hola12 <nick>; Soy <bot>, el encargado de los registros de los apodos en la red.
+
+Veo que tu apodo no está registrado.
+Puedes hacerlo en escribiendo12 /msg <bot> registra tu@correo
+y así podrás utilizar siempre este apodo (nick).
+
+Con el apodo registrado podrás hablar en muchos canales en los que solo permiten hablar a apodos registrados.
+También podrás optar a comandos y roBOTs de la red que piden que estés registrado para poder usarlos.
+
+Si necesitas ayuda, los operadores de la red están en el canal12 <canal>, que atenderán amablemente tus dudas.
+
+Gracias por leer este mensaje automático.

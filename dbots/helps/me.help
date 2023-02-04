@@ -1,0 +1,173 @@
+[CL]
+help=1
+send=1
+list=1
+read=1
+del=1
+nomemos=1
+set=1
+set-notify=1
+preopers=6
+opers=6
+users=7
+coadmins=8
+admins=8
+
+[help]
+3[ Ayuda de $memoserv ]
+.
+12 $+ $memoserv es el bot de mensajería y notas de la red. Su función
+es el envío de mensajes cortos a otros usuarios de IRC,
+independientemente de si están en línea o no, igualmente se
+puede enviar mensajes a canales(*). Ambos nicks (remitente
+y destinatario) deben de estar registrados, así mismo el
+canal debe de estar registrado si se desea enviar un mensaje a este.
+.
+Comandos de12 $memoserv incluyen:
+.
+12SEND Envía un mensaje a un nick/canal.
+12LIST Lista todos tus mensajes.
+12READ Lee un mensaje.
+12DEL Borra un mensaje (o todos).
+12NOMEMOS Evitar que un usuario te mande mensajes.
+12SET Define opciones relacionadas con mensajes.
+.
+Escriba 12/msg $memoserv AYUDA comando para ayuda mas especifica
+de los comandos arriba mencionados.
+.
+(*) Por defecto, cualquier usuario con al menos nivel 450 de
+acceso en un canal puede leer los mensajes de ese canal.
+Esto puede ser cambiado con el comando12 $chanserv LEVELS.
+
+[help-ca]
+.
+10- Comandos de Co-Administradores:
+.
+12PREOPERS Envía un memo a todos los Pre-Operadores.
+12OPERS Envía un memo a todos los Operadores.
+
+[help-a]
+.
+10- Comandos de Administradores:
+.
+12USERS Envía un memo a todos los usuarios.
+
+[help-r]
+.
+10- Comandos de Roots:
+.
+12COADMINS Envía un memo a todos los Co-Administradores.
+12ADMINS Envía un memo a todos los Administradores.
+
+[help-f]
+.
+4NOTA: Los comandos utilizados son informados en el canal
+de administradores de la red.
+
+[SEND]
+Sintaxis: 12SEND <nick/canal> <memo-texto>
+.
+Envía un memo al usuario especificado. Dicho usuario
+recibirá una noticia de que tiene un nuevo memo. Lo
+recibirá inmediatamente si se encuentra en línea, o si no al
+momento de identificarse la próxima vez que se conecte.
+
+Ejemplo: /msg $memoserv SEND Mew ¡Buen trabajo con los dbots!
+
+[LIST]
+Sintaxis: 12LIST <NEW>
+.
+Lista los memos que usted tenga actualmente.
+Si se indica el parámetro 12NEW, solo los nuevos memos (los no
+leídos) serán mostrados. Los memos no leídos están señalados
+como 4(No Leído) a la derecha del memo.
+
+[READ]
+Sintaxis: 12READ <numero>
+.
+Muestra el contenido del memo indicado el numero.
+
+[DEL]
+Sintaxis: 12DEL <numero/ALL>
+
+Si un numero 12num es dado, elimina dicho memo. Si se ingresa
+12ALL se eliminaran TODOS los memos.
+.
+Ejemplo:
+.
+12DEL 1
+Elimina su primer memo.
+
+[nomemos]
+Sintaxis: 12NOMEMOS ADD usuario
+.
+Añade un usuario a la lista de personas que no podrán enviarte memos.
+.
+Sintaxis: 12NOMEMOS DEL usuario
+.
+Borra un usuario para que pueda volver a mandarte memos.
+.
+Sintaxis 12NOMEMOS LIST
+.
+Lista los usuarios que no podrán mandarte memos.
+
+[SET]
+Sintaxis: 12SET <opción> <parámetros>
+.
+Establece varias opciones para los memos. Las opciones
+pueden ser:
+.
+12NOTIFY Establece cuando debe ser notificado de
+nuevos mensajes.
+
+Escriba 12/msg $memoserv AYUDA SET opción para obtener mas
+información acerca de la opción específica.
+
+[set-NOTIFY]
+Sintaxis: 12SET NOTIFY $chr(123) $+ ON $chr(124) LOGON $chr(124) NEW $chr(124) OFF $+ $chr(125)
+.
+Establece CUANDO debe ser notificado de nuevos memos:
+.
+12ON Será notificado cuando se conecte, cuando quite
+su modo /AWAY y cuando un memo le sea
+enviado estando usted conectado.
+12LOGON Será notificado únicamente cuando se conecte,
+y cuando quite su modo /AWAY.
+12NEW Será notificado solamente cuando le sean
+enviados.
+12OFF Usted no recibirá ningún tipo de notificación de
+memos.
+.
+12ON es básicamente la combinación de 12LOGON y 12NEW
+simultáneamente.
+
+[preopers]
+Sintaxis:12 PREOPERS <mensaje>
+.
+Envía memos a todos los PRE-OPERadores
+de la red, estén o no conectados.
+
+[opers]
+Sintaxis:12 OPERS <mensaje>
+.
+Envía memos a todos los OPERadores
+de la red, estén o no conectados.
+
+[users]
+Sintaxis:12 USERS <nick> <mensaje>
+.
+Envía memos a todos los usuarios de la red,
+estén o no conectados, siendo quien lo
+envía el nick indicado.
+
+[coadmins]
+Sintaxis:12 COADMINS <mensaje>
+.
+Envía memos a todos los CO-ADMINistradores
+de la red, estén o no conectados.
+
+[admins]
+Sintaxis:12 ADMINS <mensaje>
+.
+Envía memos a todos los ADMINistradores
+de la red, estén o no conectados.

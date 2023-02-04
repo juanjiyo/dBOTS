@@ -1,0 +1,13 @@
+Aviso de expiración del nick <d4> en <n.red>
+A su nick <d4> le queda menos una semana para caducar.
+<s>
+Si no utiliza su nick antes de la fecha <fecha.caduca> será borrado automáticamente.
+Para que ésto no ocurra conéctese a <n.red> desde su cliente de IRC.
+<s>
+Asimismo, le recuerdo que la contraseña de su nick es: <d5>
+<s>
+Si necesita activar el servicio no-expire puede hacerlo de forma gratuíta usando:
+/msg <d3> noexpire
+<s>
+Gracias por leer este mensaje automático.
+Atentamente, el equipo de <n.red>

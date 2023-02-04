@@ -1,0 +1,19 @@
+             dBoTs  %v:{
+  clear
+  echo -s 12DBots4 v $+ %v
+  echo -s 
+  echo -s Autores:
+  echo -s - Hasta la versión 2 12Davidlig
+  echo -s - Desde la versión 3 12Mew
+  echo -s 
+  echo -s URL: 12http://www.dbots.es
+  echo -s E-Mail: 12admin@dbots.es
+  echo -s 
+  echo -s 4Prohibido modificar el código de los bots y sus créditos.
+  echo -s 
+  echo -s Haz doble clic para: 12Configurar15_12dBoTs ¦ 12Conectarlos ¦ 12Actualizarlos ¦ 12Noticias ¦12 Ayuda15_12OnLine
+}
+-
+         $iif($sock(dbots) || $sock(debug.server),Desconectar,Conectar) dBoTs:$iif($sock(dbots) || $sock(debug.server) ,desconectar,conectar)
+-
+      Editar configuración:conf

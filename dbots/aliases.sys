@@ -1,0 +1,493 @@
+conectar {
+  if ($group(#todook.connect).status == on) {
+    if ($sock(dbots)) {
+      var %a = $input(Los dBoTs ya est·n conectados.,o,InformaciÛn)
+    }
+    else {
+      v.bots 12Espere: Leyendo configuraciÛn.
+      r.conf
+      v.bots 3Correcto: Lectura terminada, conectando bots.
+      sockopen debug.server $l.conf(debugserv,sip) $l.conf(debugserv,sport)
+    }
+  }
+  else { checkfiles }
+}
+
+desconectar {
+  .timer* off
+  sockclose debug.server
+  sockclose dbots
+}
+
+noticias { sockopen noticias $l.conf(updates,host) 80 }
+noticias.cierra {
+  if ( $window(@Noticias).state == normal ) { window -c @Noticias }
+}
+
+actualizar {
+  if ($sock(actualizar)) {
+    echo @bots 4No se ha podido descargar la actualizaciÛn (ConexiÛn en uso).
+    linesep @bots
+    return
+  }
+  set %actualizar.es ok
+  sockopen actualizar $l.conf(updates,host) $l.conf(updates,port)
+  echo @bots 3Update: 2Conectando con2 $l.conf(updates,host)
+}
+
+;----------
+
+ginfo return $readini(sistema\modulos\ $+ $1 $+ \ $+ $1 $+ .ini,$2,$3)
+
+metebots {
+  var %a 1
+  while ($read(sistema\modulos\modulos.txt,%a)) {
+    var %b = $gettok($read(sistema\modulos\modulos.txt,%a),1,32)
+    s : $+ $l.conf(modulosserv,sname) NICK $ginfo(%b,info,nick) 1 $ctime $ginfo(%b,info,ident) $ginfo(%b,info,host) $l.conf(modulosserv,sname) 0 : $+ $ginfo(%b,info,realname)
+    s : $+ $ginfo(%b,info,nick) mode $ginfo(%b,info,nick) + $+ $ginfo(%b,info,modos)
+    if ($ginfo(%b,info,join)) {
+      var %c 1
+      while ($gettok($ginfo(%b,info,join),%c,44)) {
+        var %d
+        var  %e
+        var %f 0
+        j $ginfo(%b,info,nick) $gettok($ginfo(%b,info,join),%c,44)
+        if ($ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),q)) {
+          %d = %d $+ q
+          inc %f 1
+        }
+        if ($ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),a)) {
+          %d = %d $+ a
+          inc %f 1
+        }
+        if ($ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),o)) {
+          %d = %d $+ o
+          inc %f 1
+        }
+        if ($ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),h)) {
+          %d = %d $+ h
+          inc %f 1
+        }
+        if ($ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),v)) {
+          %d = %d $+ v
+          inc %f 1
+        }
+        $iif(%f >= 1,s : $+ $ginfo(%b,info,nick) mode $gettok($ginfo(%b,info,join),%c,44) + $+ %d $str($+($ginfo(%b,info,nick),$chr(32)),%f))
+        if ($ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),m)) {
+          s : $+ $ginfo(%b,info,nick) mode $gettok($ginfo(%b,info,join),%c,44) + $+ $ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),m)
+        }
+        if ($ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),t)) {
+          s : $+ $ginfo(%b,info,nick) topic $gettok($ginfo(%b,info,join),%c,44) : $+ $ginfo(%b,$gettok($ginfo(%b,info,join),%c,44),t)
+        }
+        inc %c 1
+      }
+    }
+    if ($read(sistema\modulos\ $+ %b $+ \inicio.txt,1)) {
+      var %re 1
+      while ($read(sistema\modulos\ $+ %b $+ \inicio.txt,%re)) {
+        s $read(sistema\modulos\ $+ %b $+ \inicio.txt,%re)
+        inc %re 1
+      }
+    }
+    inc %a 1
+  }
+}
+
+mmete {
+  s : $+ $l.conf(modulosserv,sname) NICK $ginfo($1,info,nick) 1 $ctime $ginfo($1,info,ident) $ginfo($1,info,host) $l.conf(modulosserv,sname) 0 : $+ $ginfo($1,info,realname)
+  s : $+ $ginfo($1,info,nick) mode $ginfo($1,info,nick) + $+ $ginfo($1,info,modos)
+  g.db bots.db obots $r.c($ginfo($1,info,nick)) $ginfo($1,info,desc)
+  g.db bots.db bots $r.c($ginfo($1,info,nick)) $ginfo($1,info,desc)
+  .auser bot $ginfo($1,info,nick)
+  if ($ginfo($1,info,join)) {
+    var %c 1
+    while ($gettok($ginfo($1,info,join),%c,44)) {
+      var %d
+      var  %e
+      var %f 0
+      j $ginfo($1,info,nick) $gettok($ginfo($1,info,join),%c,44)
+      if ($ginfo($1,$gettok($ginfo($1,info,join),%c,44),q)) {
+        %d = %d $+ q
+        inc %f 1
+      }
+      if ($ginfo($1,$gettok($ginfo($1,info,join),%c,44),a)) {
+        %d = %d $+ a
+        inc %f 1
+      }
+      if ($ginfo($1,$gettok($ginfo($1,info,join),%c,44),o)) {
+        %d = %d $+ o
+        inc %f 1
+      }
+      if ($ginfo($1,$gettok($ginfo($1,info,join),%c,44),h)) {
+        %d = %d $+ h
+        inc %f 1
+      }
+      if ($ginfo($1,$gettok($ginfo($1,info,join),%c,44),v)) {
+        %d = %d $+ v
+        inc %f 1
+      }
+      $iif(%f >= 1,s : $+ $ginfo($1,info,nick) mode $gettok($ginfo($1,info,join),%c,44) + $+ %d $str($+($ginfo($1,info,nick),$chr(32)),%f))
+      if ($ginfo($1,$gettok($ginfo($1,info,join),%c,44),m)) {
+        s : $+ $ginfo($1,info,nick) mode $gettok($ginfo($1,info,join),%c,44) + $ginfo($1,$gettok($ginfo($1,info,join),%c,44),m)
+      }
+      if ($ginfo($1,$gettok($ginfo($1,info,join),%c,44),t)) {
+        s : $+ $ginfo($1,info,nick) topic $gettok($ginfo($1,info,join),%c,44) : $+ $ginfo($1,$gettok($ginfo($1,info,join),%c,44),t)
+      }
+      inc %c 1
+    }
+  }
+  if ($ini(database\especial.db,especial,1)) {
+    var %a 1
+    while ($ini(database\especial.db,especial,%a)) {
+      j $ginfo($1,info,nick) $ini(database\especial.db,especial,%a)
+      inc %a 1
+    }
+  }
+  if ($read(sistema\modulos\ $+ $1 $+ \inicio.txt,1)) {
+    var %a 1
+    while ($read(sistema\modulos\ $+ $1 $+ \inicio.txt,%a)) {
+      s $read(sistema\modulos\ $+ $1 $+ \inicio.txt,%a)
+      inc %a 1
+    }
+  }
+}
+
+cpass {
+  var %a = 1
+  var %t $iif($1,$1,12)
+  var %cpass
+  while (%a <= %t) {
+    var %b = $r(1,3)
+    if (%b == 1) { %cpass = %cpass $+ $r(A,Z) }
+    if (%b == 2) { %cpass = %cpass $+ $r(a,z) }
+    if (%b == 3) { %cpass = %cpass $+ $r(0,9) }
+    inc %a 1
+  }
+  return %cpass
+}
+
+mmode {
+  set %breoh-num 1
+  set %breoh-modo2
+  set  %breoh-n 4
+  while ($mid($4,%breoh-num,1)) {
+    set %breoh-modo $mid($4,%breoh-num,1)
+    if (%breoh-modo == + || %breoh-modo == -) {
+      set %breoh-modo2 %breoh-modo
+      ;s : $+ $binfo(info,nick) privmsg Mew :12ACCION %breoh-modo
+    }
+    if (%breoh-modo2 == +) && (%breoh-modo isincs qaohvlLbe) {
+      inc %breoh-n 1
+      ;s : $+ $binfo(info,nick) privmsg Mew : $+ %breoh-modo2 $+ %breoh-modo $gettok($1-,%breoh-n,32)
+      .signal cmmodes $3 %breoh-modo2 $+ %breoh-modo $gettok($1-,%breoh-n,32)
+    }
+    elseif (%breoh-modo2 == -) && (%breoh-modo isincs qaohvlLbe) {
+      inc %breoh-n 1
+      .signal cmmodes $3 %breoh-modo2 $+ %breoh-modo $gettok($1-,%breoh-n,32)
+      ;s : $+ $binfo(info,nick) privmsg Mew : $+ $3 %breoh-modo2 $+ %breoh-modo $gettok($1-,%breoh-n,32)
+    }
+    elseif (%breoh-modo != + || %breoh-modo != -) {
+      ;s privmsg Mew :123 %breoh-modo2 %breoh-modo
+    }
+    inc %breoh-num 1
+  }
+  unset %breoh-*
+}
+
+pffborralamierdadelascarpetas {
+  if ($isdir(logs)) { .rmdir logs }
+  if ($isdir(channels)) { .rmdir channels }
+  if ($isdir(download)) { .rmdir download }
+  if ($isdir(sounds)) { .rmdir sounds }
+}
+
+dimemodulos {
+  if ($1 == begin || $1 == end) { return }
+  if ($finddir(sistema\modulos\,*,$1,1)) {
+    var %n = $nopath($finddir(sistema\modulos\,*,$1,1))
+    var %c sistema\modulos\ $+ %n $+ \ $+ %n $+ .ini
+    if ($isalias($+(%n,.dconf))) { return $style(1) %n $+ : $+ $+(%n,.dconf) }
+    else { return %n $+ :run notepad %c }
+  }
+}
+
+dbotsupdate {
+  window -aBCdhkop +d @prueba -1 -1 220 40
+  drawtext @prueba 4 50 5 Descargando actualizaciones
+  drawrect @prueba 1 5 5 20 210 15
+  drawrect @prueba 12 5 10 25 200 5
+}
+
+ayuda.online {
+  window -ake @Ayuda_OnLine
+  echo @ayuda_online 12Conectando...
+  sockopen ayuda.online villablino.hopto.org 6667
+}
+
+mvdudb sockclose * | var %a = $input(Estas usando una version de UDB incorrecta. $+ $crlf $+ DeberÌas usar el UDB $+ $l.conf(otras,udb) $+ $crlf $+ Estas usando $1,ow,ERROR)
+
+exo {
+  if (!$window(@exo).state) {
+    window -k @exo
+  }
+  echo @exo ¶ $1-
+}
+
+qdiae {
+  if ($1 == Monday) { return Lunes }
+  if ($1 == Tuesday) { return Martes }
+  if ($1 == Wednesday) { return MiÈrcoles }
+  if ($1 == Thursday) { return Jueves }
+  if ($1 == Friday) { return Viernes }
+  if ($1 == Saturday) { return S·bado }
+  if ($1 == Sunday) { return Domingo }
+}
+
+qmese {
+  if ($1 == January) { return Enero }
+  if ($1 == February) { return Febrero }
+  if ($1 == March) { return Marzo }
+  if ($1 == April) { return Abril }
+  if ($1 == May) { return Mayo }
+  if ($1 == June) { return Junio }
+  if ($1 == July) { return Julio }
+  if ($1 == August) { return Agosto }
+  if ($1 == September) { return Septiembre }
+  if ($1 == October) { return Octubre }
+  if ($1 == November) { return Noviembre }
+  if ($1 == December) { return Diciembre }
+}
+
+lock.decode.on var %a $input(Se ha encontrado la opciÛn DECODE bloqueada. $crlf $crlf $+ Los dBoTs necesÌtan este comando para  ciertas funciones. $crlf $crlf $+  Para un correcto funcionamiento ve a opciones (alt+o) $+ $chr(44) secciÛn OTHER -> LOCK y des-activa el DECODE.,o,Problema detectado...)
+
+AutoUpDate {
+  set %autoupdate.fecha $gettok($read(cambios.txt,28),1,32)
+  actualizar
+}
+
+autoupdate.di {
+  s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :
+  s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :Leyendo12 cambios.txt
+  s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :
+  var %a 28
+  while ($read(cambios.txt,%a)) {
+    var %f = $gettok($read(cambios.txt,%a),1,32)
+    var %l = $gettok($read(cambios.txt,%a),2,32)
+    var %t = $gettok($read(cambios.txt,%a),3-,32)
+    if (%f != %autoupdate.fecha) {
+      if (%l == +) {
+        s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :4A—ADIDO: %t
+      }
+      if (%l == -) {
+        s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :4QUITADO: %t
+      }
+      if (%l == $chr(37)) {
+        s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :4CAMBIADO: %t
+      }
+      if (%l == $chr(42)) {
+        s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :4BUG ARREGLADO: %t
+      }
+    }
+    else {
+      goto fin
+    }
+    inc %a 1
+  }
+  :fin
+  s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :
+  s : $+ $centerserv %conf.metodo %conf.canal.admins $+ , $+ %conf.canal.opers :Fin de la lectura...
+  unset %autoupdate.fecha
+}
+
+fija.update set %ult.act $date(ddd $+ $chr(44) dd mmm yyyy HH:nn:ss) $gettok($date(zzz),2,32) | var %a $input(Fecha de ultima actualizaciÛn cambiada a $+ $crlf † † † %ult.act,o,Update)
+
+base64 {
+  set %b64 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+  if (enc* iswm $prop) {
+    var %x = $len($1-), %i = 0, %bstr = ""
+    while (%i < %x) {
+      inc %i 1
+      %bstr = %bstr $+ $base($asc($mid($1-,%i,1)),10,2,8)
+    }
+    var %x = $len(%bstr), %i = 1, %bc = "", %p = $calc($len(%bstr) % 6), %bits = ""
+    while (%i < %x) {
+      %bc = $mid(%bstr,%i,6)
+      if ($len(%bc) < 6) { %bc = %bc $+ $str(0,$calc(6 - $len(%bc))) }
+      %bits = %bits $+ $mid(%b64,$calc($base(%bc,2,10) + 1),1)
+      inc %i 6
+    }
+    if (%p > 0) {
+      if (%p == 2) %bits = %bits $+ ==
+      elseif (%p == 4) %bits = %bits $+ =
+    }
+    return %bits
+  }
+  elseif (dec* iswm $prop) {
+    var %x = $len($1), %i = 0, %bstr = "", %p = $numtok($1,$asc(=)), %pos = 0, %asc = 0
+    while (%i < %x) {
+      inc %i 1
+      %pos = $poscs(%b64,$mid($1,%i,1),1)
+      if (%pos > 0) { %pos = $calc(%pos - 1) }
+      %bstr = %bstr $+ $base(%pos,10,2,6)
+    }
+    var %x = $len(%bstr), %i = 1, %text = ""
+    while (%i < %x) {
+      %asc = $base($mid(%bstr,%i,8),2,10)
+      if (%asc == 32) { %text = %text $chr(%asc) }
+      else { %text = %text $+ $chr(%asc) }
+      inc %i 8
+    }
+    return %text
+  }
+}
+
+rnum {
+  var %n $replace($2,0,c)
+  var %a 1
+  var %t1 -
+  var %t2 -
+  var %t3 -
+  var %t4 -
+  var %t5 -
+  var %chr $chr($rnumchr)
+  var %- 00,00 $+ %chr
+  var %+ 01,01 $+ %chr
+  while ($mid(%n,%a,1)) {
+    if ($mid(%n,%a,1) == c) {
+      %t1 = %t1 $+ +++ $+ -
+      %t2 = %t2 $+ +-+ $+ -
+      %t3 = %t3 $+ +-+ $+ -
+      %t4 = %t4 $+ +-+ $+ -
+      %t5 = %t5 $+ +++ $+ -
+    }
+    if ($mid(%n,%a,1) == 1) {
+      %t1 = %t1 $+ -++-
+      %t2 = %t2 $+ +++-
+      %t3 = %t3 $+ --+-
+      %t4 = %t4 $+ --+-
+      %t5 = %t5 $+ --+-
+    }
+    if ($mid(%n,%a,1) == 2) {
+      %t1 = %t1 $+ +++ $+ -
+      %t2 = %t2 $+ --+ $+ -
+      %t3 = %t3 $+ +++ $+ -
+      %t4 = %t4 $+ +-- $+ -
+      %t5 = %t5 $+ +++ $+ -
+    }
+    if ($mid(%n,%a,1) == 3) {
+      %t1 = %t1 $+ +++ $+ -
+      %t2 = %t2 $+ --+ $+ -
+      %t3 = %t3 $+ +++ $+ -
+      %t4 = %t4 $+ --+ $+ -
+      %t5 = %t5 $+ +++ $+ -
+    }
+    if ($mid(%n,%a,1) == 4) {
+      %t1 = %t1 $+ +-+ $+ -
+      %t2 = %t2 $+ +-+ $+ -
+      %t3 = %t3 $+ +++ $+ -
+      %t4 = %t4 $+ --+ $+ -
+      %t5 = %t5 $+ --+ $+ -
+    }
+    if ($mid(%n,%a,1) == 5) {
+      %t1 = %t1 $+ +++ $+ -
+      %t2 = %t2 $+ +-- $+ -
+      %t3 = %t3 $+ +++ $+ -
+      %t4 = %t4 $+ --+ $+ -
+      %t5 = %t5 $+ +++ $+ -
+    }
+    if ($mid(%n,%a,1) == 6) {
+      %t1 = %t1 $+ +++ $+ -
+      %t2 = %t2 $+ +-- $+ -
+      %t3 = %t3 $+ +++ $+ -
+      %t4 = %t4 $+ +-+ $+ -
+      %t5 = %t5 $+ +++ $+ -
+    }
+    if ($mid(%n,%a,1) == 7) {
+      %t1 = %t1 $+ +++ $+ -
+      %t2 = %t2 $+ +-+ $+ -
+      %t3 = %t3 $+ --+ $+ -
+      %t4 = %t4 $+ --+ $+ -
+      %t5 = %t5 $+ --+ $+ -
+    }
+    if ($mid(%n,%a,1) == 8) {
+      %t1 = %t1 $+ +++ $+ -
+      %t2 = %t2 $+ +-+ $+ -
+      %t3 = %t3 $+ +++ $+ -
+      %t4 = %t4 $+ +-+ $+ -
+      %t5 = %t5 $+ +++ $+ -
+    }
+    if ($mid(%n,%a,1) == 9) {
+      %t1 = %t1 $+ +++ $+ -
+      %t2 = %t2 $+ +-+ $+ -
+      %t3 = %t3 $+ +++ $+ -
+      %t4 = %t4 $+ --+ $+ -
+      %t5 = %t5 $+ --+ $+ -
+    }
+    inc %a 1
+  }
+  s : $+ $nickserv privmsg $1 :
+  s : $+ $nickserv privmsg $1 : $+ $replace(%t1,-,%-,+,%+)
+  s : $+ $nickserv privmsg $1 : $+ $replace(%t2,-,%-,+,%+)
+  s : $+ $nickserv privmsg $1 : $+ $replace(%t3,-,%-,+,%+)
+  s : $+ $nickserv privmsg $1 : $+ $replace(%t4,-,%-,+,%+)
+  s : $+ $nickserv privmsg $1 : $+ $replace(%t5,-,%-,+,%+)
+  s : $+ $nickserv privmsg $1 :
+  s : $+ $nickserv privmsg $1 :Para validar tu registro, escribe:
+  s : $+ $nickserv privmsg $1 :12/msg $nickserv validar <numero>
+}
+
+rnumchr {
+  :sacanumero
+  var %a $r(1,255)
+  if (%a isnum 1-32 || $istok(43 45 127 129 141 143 144 157 160,%a,32)) {
+    goto sacanumero
+  }
+  else {
+    goto yata
+  }
+  :yata
+  return %a
+}
+
+m.h {
+  flushini $3
+  var %s.n = $s.n($2)
+  var %s.c = $readini($3,cl,$4)
+  if ( $initopic( $3 , $4 ) == 0 || %s.n < %s.c ) {
+    s : $+ $1 %conf.metodo $2 :No dispongo de ayuda para12 $replace($4,-,$chr(32)) $+ .
+    ;debugc $1 %conf.canal.admins $+ , $+ %conf.canal.opers El usuario12 $2 ha usado el comando4 HELP $4 y no tengo ayuda para ese comando !!
+  }
+  else {
+    clear @m.h
+    window -hl @m.h
+    loadbuf -t $+ $4 @m.h $3
+    %tmp.total = $line(@m.h,0)
+    %tmp.linea = 0
+    while ( %tmp.linea < %tmp.total ) {
+      inc %tmp.linea
+      %tmp.l.linea = $line( @m.h , %tmp.linea )
+      %tmp.scanal = $replace(%tmp.l.linea,<-bot->,$1,<-nick->,$2)
+      %tmp.scanalm = $eval(%tmp.scanal,2)
+      if (%tmp.scanalm) { s : $+ $1 %conf.metodo $2 : $+ $iif(%tmp.scanalm == .,†,%tmp.scanalm) }
+    }
+  }
+}
+
+inthtml {
+  return $remove($replace($1,√≤,Ú,√∫,˙,√±,Ò,√çs,Õ,√±,Ò,√ß,Á,&lt;,<,&gt;,>,&amp;,&,&quot;,",&aacute;,·,&agrave;,‡,&eacute;,È,√©,È,√°,·,√≠,Ì,√≥,Û,&egrave;,Ë,&iacute;,Ì,&igrave;,Ï,&oacute;,Û,&ograve;,Ú,&uacute;,˙,&ugrave;,˘,&auml;,‰,&acirc;,‚,&euml;,Î,&ecirc;,Í,&iuml;,Ô,&icirc;,Ó,&ouml;,ˆ,&ocirc;,Ù,&uuml;,¸,&ucirc;,˚,&aring;,Â,&atilde;,„,&ccedil;,Á,&ntilde;,Ò,&Yacute;,›,&otilde;,ı,&yacute;,˝,&Oslash;,ÿ,&yuml;,ˇ,&oslash;,¯,&THORN;,ﬁ,&ETH;,–,&thorn;,˛,&eth;,,&AElig;,∆,&szlig;,ﬂ,&aelig;,Ê,&frac14;,º,&nbsp;,$chr(32),&frac12;,Ω,&iexcl;,°,&frac34;,æ,&pound;,£,&copy;,©,&yen;,•,&reg;,Æ,&sect;,ß,&ordf;,™,&curren;,§,&sup2;,≤,&brvbar;,¶,&macr;,Ø,&not;,¨,&laquo;,´,&acute;,¥,&uml;,®,&raquo;,ª,&cedil;,∏,&iquest;,ø),$chr(9),&#039;,')
+}
+
+chequea.modulos {
+  if ($script(0) > 14) {
+    var %a 1
+    while ($script(%a)) {
+      if (sistema\modulos isin $script(%a)) {
+        var %m = $gettok($script(%a),$calc($numtok($script(%a),92) - 1),92)
+        if (!$read(sistema\modulos\modulos.txt,s,%m)) { write sistema\modulos\modulos.txt %m ok }
+      }
+      inc %a 1
+    }
+  }
+}
+
+checkip return $regex(isip,$$1,/^(?:(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?1)$/)

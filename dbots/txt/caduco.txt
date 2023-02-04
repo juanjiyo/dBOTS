@@ -1,0 +1,13 @@
+Aviso de expiración del nick <d4> en <n.red>
+Su nick <d4> ha caducado por falta de uso.
+<s>
+La fecha de expiración para dicho nick era <fecha.caduca>.
+<s>
+Si lo desea, puede entrar a la red para volver a registrar su nick antes de que otro usuario lo haga.
+<s>
+También le recordamos que si va a ausentarse por una temporada, puede activar el servicio noexpire y así su nick no espirara tan rápido.
+Para ello use:
+/msg <d3> noexpire
+<s>
+Gracias por leer este mensaje automático.
+Atentamente, el equipo de <n.red>

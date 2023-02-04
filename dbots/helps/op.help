@@ -1,0 +1,295 @@
+[cl]
+help=4
+help-o-5
+help-a=7
+help-r=8
+help-f=4
+stats=4
+ircops=4
+op=4
+deop=4
+mode=4
+kick=4
+block=4
+gline=5
+root=5
+settime=5
+apodera=5
+limpia=5
+rename=5
+killclones=5
+listclones=5
+invite=5
+spam=7
+dropnbd=8
+set=8
+set-sufijo=8
+set-nickserv=8
+set-ipserv=8
+set-passprotect=8
+set-prefijos=8
+
+[help]
+3[ Ayuda de $operserv ]
+.
+12 $+ $operserv es el servicio de control para uso
+exclusivo de Pre-Operadores y Operadores.
+.
+10- Comandos de Pre-Operadores:
+.
+12STATS Estadísticas de la red.
+12IRCOPS Muestra los representantes conectados.
+12OP/DEOP Hace OP o DEOP vía $operserv $+ .
+12MODE Establece modos a un canal.
+12KICK Expulsa a un usuario de un canal.
+12KILL Expulsa a un usuario de la red.
+12BLOCK Expulsa 5 minutos a un usuario de la red.
+
+[help-o]
+.
+10- Comandos de Operadores:
+.
+12GLINE Gestiona la lista de G-Lines.
+12ROOT Te identifica como el root de los servicios.
+12SETTIME Sincroniza los relojes de los servidores.
+12APODERA Quita todos los status de un canal.
+12LIMPIA Expulsa a todos los usuarios de un canal.
+12RENAME Cambia un nick a %conf.pinv $+ XXXXXXXXXX.
+12KILLCLONES Expulsa a un usuario y todos sus clones.
+12LISTCLONES Lista los clones de un usuario.
+12INVITE Te invita a un canal, esté o no registrado.
+
+[help-a]
+.
+10- Comandos de Administradores:
+.
+12SPAM Gestiona el spam en el IRC.
+
+[help-r]
+.
+10- Comandos de ROOT:
+.
+12DROPNDB Borra un nick de las tablas del IRCD.
+12SET Configura algunas opciones.
+
+[help-f]
+.
+4NOTA: Los comandos utilizados son informados en el canal
+de operadores y administradores de la red.
+
+[stats]
+Sintaxis:12 STATS
+.
+Muestra estadisticas del IRC.
+
+[ircops]
+Sintaxis:12 IRCOPS
+.
+Muestra los IRCops conectados
+en ese momento en el IRC.
+
+[op]
+Sintaxis:12 OP <canal> <usuario>
+.
+Da @ a un usuario en el canal indicado.
+
+[deop]
+Sintaxis:12 OP <canal> <usuario>
+.
+Quita @ a un usuario en el canal indicado.
+
+[mode]
+Sintaxis:12 MODE <canal> <+/-modos>
+.
+Cambia los modos del canal indicado.
+
+[kick]
+Sintaxis:12 KICK <canal> <nick> <motivo>
+.
+Expulsa a un usuario de un canal, con el motivo indicado.
+
+[kill]
+Sintaxis:12 KILL <usuario> <mensaje>
+.
+Expulsa a un usuario del IRC con el mensaje indicado.
+
+[block]
+Sintxis:12 BLOCK <usuario> <mensaje>
+.
+Expulsa a un usuario del IRC durante 5 minutos
+con el mensaje indicado.
+
+[gline]
+Sintaxis:12 GLINE ADD <+expiración> <ip/host> <motivo>
+.
+Añade un G-Line a la IP o HOST indicados, durante el tiempo
+(expiración) indicados. La expiración ha de ser en segundos.
+.
+Sintaxis:12 GLINE DEL <ip/host>
+.
+Elimina una G-Line.
+.
+Sintaxis:12 GLINE LIST
+.
+Lista las G-Lines activas.
+.
+Sintaxis:12 GLINE VIEW <ip/host>
+.
+Muestra información relacionada
+con la IP o HOST especificados.
+
+[root]
+Sintaxis:12 ROOT <contraseña>
+
+Te identifica como ROOT de la red.
+
+[settime]
+Sintaxis 12SETTIME
+.
+Ajusta los relojes de los servidores
+de la red para evitar posibles fechas
+erroneas a la hora de entrada de usuarios,
+creación de canales. etc.
+
+[apodera]
+Sintaxis:12 APODERA <canal>
+.
+Borra todos los modos, bans, topic, etc
+del canal indicado.
+
+[limpia]
+Sintaxis:12 LIMPIA <canal>
+.
+Expulsa a todos los usuarios de un canal.
+
+[rename]
+Sintaxis:12 RENAME <nick>
+.
+Cambia el nick de un usuario al de
+$l.conf(otras,pinvitado) $+ XXXXXX
+
+[killclones]
+Sintaxis:12 KILLCLONES <nick> <motivo>
+.
+Expulsa del IRC a los clones (usuarios conectados
+desde la misma IP o HOST) del usuario indicado.
+
+[listclones]
+Sintaxis: 12LISTCLONES <nick>
+.
+Lista los clones (usuarios conectados desde
+la misma IP o HOST) del usuario indicado.
+
+[invite]
+Sintaxis:12 INVITE <canal>
+.
+Hace que12 $operserv te
+invite al canal indicado.
+
+[SET-sufijo]
+Sintaxis: 12SET SUFIJO valor
+.
+El sufijo deberá estar compuesto de letras
+nada mas, exceptuando ñ y ç.
+
+[set-nickserv]
+Sintaxis: 12SET NICKSERV nick!ident@host
+.
+Establece el nick de NiCKServ en el UDB.
+Debe ser tal como se indica en la sintaxis, con
+el nick, la ident y el host, separados por sus
+correspondientes. El más usado es NiCK!-@-
+
+[set-chanserv]
+Sintaxis: 12SET CHANSERV nick!ident@host
+.
+Establece el nick de CHaNServ en el UDB.
+Debe ser tal como se indica en la sintaxis, con
+el nick, la ident y el host, separados por sus
+correspondientes. El más usado es CHaN!-@-
+
+[set-ipserv]
+Sintaxis: 12SET IPSERV nick!ident@host
+.
+Establece el nick de IPServ en el UDB.
+Debe ser tal como se indica en la sintaxis, con
+el nick, la ident y el host, separados por sus
+correspondientes. El más usado es ipvirtual!-@-
+
+[set-passprotect]
+Sintaxis: 12SET PASSPROTECT veces:segundos
+.
+Establece una protección por UDB para nicks registrados.
+Si un usuario intenta ponerse un nick con password invalido
+el numero de VECES indicado, antes de los SEGUNDOS,
+el nick es lageado para evitar que siga probando password.
+
+[set-prefijos+
+Sintaxis: 12SET PREFIJOS carateres
+.
+Permite configurar los prefijos de los canales
+(por defecto ~&@%+ para +qaohv) por los
+deseados. Cabe mencionar que los cambios solo
+se veran bien una vez el cliente de IRC haya 
+reconectado al IRC.
+
+[set]
+El comando 12SET permite configurar las siguientes
+opciones en el bloque Set del UDB:
+.
+12SUFIJO Cambia el sufijo de las IPs virtuales.
+12NICKSERV Establece el nick de Nickserv en el UDB.
+12CHANSERV Establece el nick de Chanserv en el UDB.
+12IPSERV Establece el nick de Ipserv en el UDB.
+12PASSPROTECT Configura la proteccion de password en el UDB.
+12PREFIJOS Configura los prefijos (+q +a +o +h +v) de los canales.
+.
+Para más información sobre una opción especifica, escriba:
+12/msg $operserv help set opción
+
+[spam]
+Sintaxis: 12SPAM ADD <palabra> <lugares> <acción> <tiempo> <razón>
+.
+Añade una palabra a la lista de spam. Se pueden usar espacios, cambiando
+el espacio por el guion bajo _. Los lugares y acciones se salen abajo
+especificadas. El tiempo ha de ser en segundos. La razón será mostrada
+en un lugar u otro según la acción especificada.
+.
+Sintaxis: 12SPAM DEL <palabra>
+.
+Borra una palabra de la lista de spam.
+.
+Sintaxis:12 SPAM VIEW <palabra>
+.
+Permite ver la información relacionada de spam
+de la palabra indicada (lugares, acción, etc).
+.
+Sintaxis: 12SPAM LIST
+.
+Lista la base de datos de spam.
+.
+Lugares que se pueden especificar:
+.
+12c mensajes a canales, 12p mensajes privados,
+12n notices a usuarios, 12N notices a canales, 
+12P mensajes al salir del canal, 12q mensajes al salir del IRC,
+12d envíos por dcc, 12a mensajes de away,
+12t topic en canales, 12u usuarios (En modo nick!user@host:realname ban)
+.
+Acciones que se pueden tomar:
+.
+12kill, 12tempshun (solo el rato que esté conectado), 12shun,
+12kline, 12gline, 12zline, 12gzline, 12block (bloquea los mensajes),
+12dccblock (le impide enviar dccs), 12viruschan (lo saca de todos los canales
+y lo introduce al canal de ayuda contra virus), 12warn (Avisa a los OPERadores del IRC).
+
+[dropndb]
+Sintaxis:12 DROPNDB <nick>
+.
+Elimina un nick que esté en la BDD del Unreal IRCd
+pero no esté registrado en los dBoTs.
+.
+4NOTA: Los services borran automaticamente
+tanto los nicks como los canales que ven 
+en la BDD al conectarlos a la red, e informan
+en el canal de los administradores ( $+ %conf.canal.admins $+ ).
